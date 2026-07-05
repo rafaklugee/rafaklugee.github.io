@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rafael Ribeiro Kluge — Ciência da Computação, UFPR</title>
+<meta name="description" content="Portfólio de Rafael Ribeiro Kluge, estudante de Ciência da Computação na UFPR.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #10141c;
+    --bg-alt: #161b26;
+    --panel: #131822;
+    --text: #e7e4da;
+    --muted: #8b93a7;
+    --accent: #4fd1c5;
+    --accent-2: #f0a860;
+    --line: #232a38;
+    --radius: 6px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--accent);color:#0d1117;}
+  a{color:inherit;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+
+  .circuit-bg{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    opacity:0.14;
+    pointer-events:none;
+  }
+
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 6vw;
+    background:rgba(16,20,28,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .logo{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:700;
+    font-size:1.05rem;
+    letter-spacing:0.02em;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .logo .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 8px var(--accent);
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1;} 50%{opacity:0.35;}
+  }
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap:28px;
+    margin:0;padding:0;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.85rem;
+  }
+  nav a{
+    text-decoration:none;
+    color:var(--muted);
+    transition:color .2s;
+    position:relative;
+  }
+  nav a:hover{color:var(--accent);}
+  nav .icon-link{display:flex;align-items:center;}
+  .nav-links{display:flex;align-items:center;gap:28px;}
+
+  .hero{
+    position:relative;
+    z-index:1;
+    padding:14vh 6vw 12vh;
+    max-width:920px;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--accent);
+    font-size:0.85rem;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;height:1px;
+    background:var(--accent);
+    display:inline-block;
+  }
+  h1.name{
+    font-family:'JetBrains Mono',monospace;
+    font-size:clamp(2.4rem, 6vw, 4.4rem);
+    font-weight:700;
+    margin:0 0 6px;
+    line-height:1.05;
+    letter-spacing:-0.01em;
+  }
+  .name .cursor{
+    display:inline-block;
+    width:0.55ch;
+    background:var(--accent);
+    animation:blink 1s step-end infinite;
+  }
+  @keyframes blink{50%{opacity:0;}}
+  .role{
+    font-size:clamp(1.05rem,2vw,1.35rem);
+    color:var(--muted);
+    margin:0 0 28px;
+    font-weight:500;
+  }
+  .role strong{color:var(--text);font-weight:600;}
+  .pitch{
+    max-width:640px;
+    color:var(--muted);
+    font-size:1.02rem;
+    margin-bottom:36px;
+  }
+  .hero-actions{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.88rem;
+    padding:12px 20px;
+    border-radius:var(--radius);
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:transform .15s, border-color .15s, background .15s;
+    border:1px solid var(--line);
+  }
+  .btn-primary{
+    background:var(--accent);
+    color:#0d1117;
+    border-color:var(--accent);
+    font-weight:600;
+  }
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{
+    color:var(--text);
+    background:transparent;
+  }
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
+
+  section{
+    position:relative;
+    z-index:1;
+    padding:9vh 6vw;
+    border-top:1px solid var(--line);
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:16px;
+    margin-bottom:44px;
+  }
+  .section-head .tag{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--accent);
+    font-size:0.85rem;
+  }
+  .section-head h2{
+    font-size:clamp(1.5rem,3vw,2rem);
+    margin:0;
+    font-weight:700;
+  }
+  .section-head .rule{
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:60px;
+    align-items:start;
+  }
+  .about-grid p{color:var(--muted);margin-bottom:16px;}
+  .about-grid p strong{color:var(--text);}
+  .chip-panel{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px;
+  }
+  .chip-panel .label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.78rem;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin-bottom:14px;
+    display:block;
+  }
+  .chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .chip{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.78rem;
+    padding:6px 10px;
+    border:1px solid var(--line);
+    border-radius:4px;
+    color:var(--accent-2);
+    background:var(--bg-alt);
+  }
+
+  .timeline{
+    border-left:1px solid var(--line);
+    padding-left:34px;
+    display:flex;
+    flex-direction:column;
+    gap:38px;
+  }
+  .t-item{position:relative;}
+  .t-item::before{
+    content:"";
+    position:absolute;
+    left:-40px;
+    top:4px;
+    width:9px;height:9px;
+    border-radius:50%;
+    background:var(--bg);
+    border:2px solid var(--accent);
+  }
+  .t-year{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--accent);
+    font-size:0.82rem;
+    margin-bottom:6px;
+    display:block;
+  }
+  .t-item h3{margin:0 0 6px;font-size:1.15rem;}
+  .t-item p{margin:0;color:var(--muted);}
+
+  .li-callout{
+    margin-top:38px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+    background:linear-gradient(135deg, rgba(79,209,197,0.06), transparent 60%);
+    position:relative;
+    overflow:hidden;
+  }
+  .li-callout::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-left:2px solid var(--accent);
+  }
+  .li-callout-text{display:flex;align-items:center;gap:16px;}
+  .li-callout-icon{
+    width:42px;height:42px;
+    border-radius:8px;
+    background:var(--bg-alt);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--accent);
+    flex-shrink:0;
+  }
+  .li-callout h4{margin:0 0 4px;font-size:1rem;}
+  .li-callout p{margin:0;color:var(--muted);font-size:0.9rem;}
+
+  .projects-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(320px,1fr));
+    gap:24px;
+  }
+  .card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:26px;
+    display:flex;
+    flex-direction:column;
+    transition:border-color .2s, transform .2s;
+  }
+  .card:hover{border-color:var(--accent);transform:translateY(-3px);}
+  .card-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:14px;
+  }
+  .card-head h3{margin:0;font-size:1.15rem;font-family:'JetBrains Mono',monospace;}
+  .card-icon{
+    width:34px;height:34px;
+    border-radius:4px;
+    background:var(--bg-alt);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--accent);
+    flex-shrink:0;
+  }
+  .card p.desc{color:var(--muted);font-size:0.95rem;flex:1;margin-bottom:18px;}
+  .card .chips{margin-bottom:18px;}
+  .card .sub{
+    border-top:1px solid var(--line);
+    padding-top:12px;
+    margin-bottom:14px;
+    font-size:0.88rem;
+  }
+  .card .sub-item{margin-bottom:8px;color:var(--muted);}
+  .card .sub-item strong{color:var(--text);}
+  .card-links{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .card-links a{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.82rem;
+    text-decoration:none;
+    color:var(--accent);
+    display:flex;align-items:center;gap:6px;
+  }
+  .card-links a:hover{color:var(--accent-2);}
+
+  .contact-wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:32px;
+  }
+  .contact-copy p{color:var(--muted);max-width:480px;}
+  .contact-links{display:flex;gap:14px;flex-wrap:wrap;}
+
+  footer{
+    padding:28px 6vw 40px;
+    text-align:center;
+    color:var(--muted);
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.78rem;
+  }
+
+  @media (max-width:820px){
+    .about-grid{grid-template-columns:1fr;}
+    nav ul{display:none;}
+    header{padding:16px 5vw;}
+    section{padding:8vh 5vw;}
+    .li-callout{flex-direction:column;align-items:flex-start;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<svg class="circuit-bg" viewBox="0 0 1200 1400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="#4fd1c5" stroke-width="1" fill="none">
+    <path d="M0 120 H260 V220 H520 V120 H900"/>
+    <path d="M0 340 H140 V500 H420 V620 H1200"/>
+    <path d="M1200 200 H860 V60"/>
+    <path d="M60 700 V900 H340 V1040 H700"/>
+    <path d="M1200 900 H980 V760 H700"/>
+    <path d="M0 1100 H240 V1240 H600 V1200 H1200"/>
+  </g>
+  <g fill="#4fd1c5">
+    <circle cx="260" cy="120" r="3"/><circle cx="520" cy="220" r="3"/><circle cx="900" cy="120" r="3"/>
+    <circle cx="140" cy="340" r="3"/><circle cx="420" cy="620" r="3"/><circle cx="860" cy="200" r="3"/>
+    <circle cx="340" cy="700" r="3"/><circle cx="700" cy="1040" r="3"/><circle cx="980" cy="900" r="3"/>
+    <circle cx="240" cy="1100" r="3"/><circle cx="600" cy="1240" r="3"/>
+  </g>
+</svg>
+
+<header>
+  <div class="logo"><span class="dot"></span>rafaklugee<span class="mono" style="color:var(--muted)">.io</span></div>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#sobre">sobre</a></li>
+      <li><a href="#formacao">formação</a></li>
+      <li><a href="#projetos">projetos</a></li>
+      <li><a href="#contato">contato</a></li>
+      <li class="icon-link"><a href="https://github.com/rafaklugee" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.95.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.78 1.19 1.78 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.18 1.82 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.08.78 2.17 0 1.57-.01 2.83-.01 3.22 0 .3.2.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+      </a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero" style="border-top:none;padding-top:14vh;">
+  <div class="eyebrow mono">status: online</div>
+  <h1 class="name mono">Rafael Ribeiro Kluge<span class="cursor">&nbsp;</span></h1>
+  <p class="role">Estudante de <strong>Ciência da Computação</strong> na UFPR</p>
+  <p class="pitch">Focado em resolução de problemas: da solução mais simples à automação de processos complexos. Acredito que, quando um processo é bem compreendido, é possível encontrar soluções eficientes, práticas e bem estruturadas para qualquer desafio.</p>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="#projetos">Ver projetos</a>
+    <a class="btn btn-ghost" href="#contato">Contato</a>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="section-head">
+    <span class="tag mono">01</span>
+    <h2>Sobre</h2>
+    <div class="rule"></div>
+  </div>
+  <div class="about-grid">
+    <div>
+      <p>Sou estudante de <strong>Ciência da Computação na Universidade Federal do Paraná (UFPR)</strong>, atualmente cursando disciplinas de sistemas operacionais, teoria dos grafos, redes de computadores e otimização combinatória.</p>
+      <p>Além da graduação, participo de um <strong>projeto de iniciação científica</strong> voltado ao mapeamento de experiências em zonas de conflito usando técnicas de Machine Learning. Também já realizei palestras e apresentações de projetos na <strong>Semana Acadêmica de Computação e Informática</strong> e <strong>Semana Integrada de Ensino, Pesquisa e Extensão</strong>, além de ter artigo publicado no <strong>Congresso da Sociedade Brasileira de Computação</strong> sobre o desenvolvimento de um tradutor de libras.</p>
+    </div>
+    <div class="chip-panel">
+      <span class="label">Ferramentas</span>
+      <div class="chips">
+        <span class="chip">C</span>
+        <span class="chip">C++</span>
+        <span class="chip">HTML</span>
+        <span class="chip">CSS</span>
+        <span class="chip">JavaScript</span>
+        <span class="chip">PostgreSQL</span>
+        <span class="chip">Node.js</span>
+        <span class="chip">Lua</span>
+        <span class="chip">Java</span>
+        <span class="chip">Python</span>
+        <span class="chip">Haskell</span>
+        <span class="chip">Shell Script</span>
+        <span class="chip">Azure</span>
+        <span class="chip">DBT</span>
+        <span class="chip">DataDog</span>
+        <span class="chip">Snowflake</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="formacao">
+  <div class="section-head">
+    <span class="tag mono">02</span>
+    <h2>Formação, Experiência e Cursos</h2>
+    <div class="rule"></div>
+  </div>
+  <div class="timeline">
+    <div class="t-item">
+      <span class="t-year mono">em andamento</span>
+      <h3>Bacharelado em Ciência da Computação — UFPR</h3>
+      <p>Previsão de conclusão: dezembro de 2028</p>
+    </div>
+  </div>
+
+  <div class="li-callout">
+    <div class="li-callout-text">
+      <div class="li-callout-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+      </div>
+      <div>
+        <h4>Histórico completo de experiências e cursos</h4>
+        <p>Cargos, certificações e cursos complementares estão atualizados no meu LinkedIn.</p>
+      </div>
+    </div>
+    <a class="btn btn-primary" href="https://www.linkedin.com/in/rafaelribeirokluge/" target="_blank" rel="noopener">
+      Ver no LinkedIn →
+    </a>
+  </div>
+</section>
+
+<section id="projetos">
+  <div class="section-head">
+    <span class="tag mono">03</span>
+    <h2>Projetos</h2>
+    <div class="rule"></div>
+  </div>
+  <div class="projects-grid">
+
+    <div class="card">
+      <div class="card-head">
+        <h3>FIKC</h3>
+        <div class="card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg>
+        </div>
+      </div>
+      <p class="desc">Secretária virtual: aplicação web para agendamento de reuniões, com áreas de login separadas para administrador e cliente, e módulo de relatórios.</p>
+      <div class="chips">
+        <span class="chip">Node.js</span><span class="chip">JavaScript</span><span class="chip">PostgreSQL</span>
+      </div>
+      <div class="card-links">
+        <a href="https://github.com/rafaklugee/FIKC" target="_blank" rel="noopener">→ ver repositório</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>PET-GAME</h3>
+        <div class="card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="7" width="16" height="10" rx="2"/><path d="M9 12h.01M15 12h.01M7 10v4M17 10v4"/></svg>
+        </div>
+      </div>
+      <p class="desc">Jogo 8-bit sobre circuitos digitais, ensinando de forma interativa os conceitos introdutórios da matéria: portas lógicas, operações binárias e álgebra booleana.</p>
+      <div class="chips">
+        <span class="chip">Jogo Didático</span><span class="chip">Circuitos Digitais</span>
+      </div>
+      <div class="card-links">
+        <a href="https://github.com/rafaklugee/PET-GAME" target="_blank" rel="noopener">→ ver repositório</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>PROGRAMAÇÃO EM C</h3>
+        <div class="card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 4 3 12l5 8M16 4l5 8-5 8"/></svg>
+        </div>
+      </div>
+      <p class="desc">Repositório com os principais trabalhos da disciplina de Programação 2, com destaque para dois projetos em C.</p>
+      <div class="sub">
+        <div class="sub-item"><strong>A1-VINAc</strong> — compactador de arquivos criado do zero, inspirado em formatos como .zip e .tgz.</div>
+        <div class="sub-item"><strong>A3-Run-n-Gun</strong> — jogo estilo run-n-gun desenvolvido em C com a biblioteca Allegro.</div>
+      </div>
+      <div class="chips">
+        <span class="chip">C</span><span class="chip">Allegro</span>
+      </div>
+      <div class="card-links">
+        <a href="https://github.com/rafaklugee/prog2" target="_blank" rel="noopener">→ ver repositório</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contato">
+  <div class="section-head">
+    <span class="tag mono">04</span>
+    <h2>Contato</h2>
+    <div class="rule"></div>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-copy">
+      <p>Aberto a conversar sobre projetos e oportunidades, ou só trocar uma ideia sobre computação, programação e jogos :)</p>
+    </div>
+    <div class="contact-links">
+      <a class="btn btn-primary" href="https://www.linkedin.com/in/rafaelribeirokluge/" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+        LinkedIn
+      </a>
+      <a class="btn btn-ghost" href="https://github.com/rafaklugee" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.95.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.78 1.19 1.78 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.18 1.82 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.08.78 2.17 0 1.57-.01 2.83-.01 3.22 0 .3.2.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+        GitHub
+      </a>
+      <a class="btn btn-ghost" href="mailto:rafaelkluge2010@gmail.com">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2Z"/><path d="m22 6-10 7L2 6"/></svg>
+        E-mail
+      </a>
+      <a class="btn btn-ghost" href="tel:+5547996305089">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+        (47) 99630-5089
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="mono">01110010 01100001 01100110 — © <span id="year"></span> Rafael Ribeiro Kluge</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
