@@ -3,592 +3,521 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rafael Ribeiro Kluge — Ciência da Computação, UFPR</title>
-<meta name="description" content="Portfólio de Rafael Ribeiro Kluge, estudante de Ciência da Computação na UFPR.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Rafael Kluge, portfólio</title>
+<meta name="description" content="Portfólio de Rafael Kluge, estudante de Ciência da Computação na UFPR. Pesquisa em IA no Brasil e no Canadá; sites, sistemas e apps web como Nosso Dia, Conflitos Urbanos e FIKC.">
+<meta property="og:title" content="Rafael Kluge, portfólio">
+<meta property="og:description" content="Sites, sistemas e apps web feitos sob medida. Veja meus projetos.">
+<meta property="og:image" content="assets/fikc-d.jpg">
+<meta name="theme-color" content="#f7941d">
+<link rel="preload" href="assets/fonts/archivo-expanded.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/general-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<script>document.documentElement.classList.add('js')</script>
 <style>
+  @font-face{font-family:'Archivo';src:url('assets/fonts/archivo-expanded.woff2') format('woff2');font-weight:800 900;font-stretch:125%;font-display:swap;}
+  @font-face{font-family:'General Sans';src:url('assets/fonts/general-sans-400.woff2') format('woff2');font-weight:400;font-display:swap;}
+  @font-face{font-family:'General Sans';src:url('assets/fonts/general-sans-500.woff2') format('woff2');font-weight:500;font-display:swap;}
+
   :root{
-    --bg: #10141c;
-    --bg-alt: #161b26;
-    --panel: #131822;
-    --text: #e7e4da;
-    --muted: #8b93a7;
-    --accent: #4fd1c5;
-    --accent-2: #f0a860;
-    --line: #232a38;
-    --radius: 6px;
+    --bg:#ffffff;
+    --surface:#f4f4f2;
+    --field:#e3e1dc;
+    --ink:#1f2b4d;
+    --muted:#5d6479;
+    --accent:#f7941d;
+    --night:#1b1f35;
+
+    --display:'Archivo', 'Arial Black', sans-serif;
+    --text:'General Sans', system-ui, sans-serif;
+
+    --step-small:clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+    --step-body:clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+    --step-lead:clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+    --step-head:clamp(1.75rem, 1.2rem + 1.6vw, 2.5rem);
+
+    --wrap:1120px;
+    --radius:12px;
+    --ease:cubic-bezier(.22,1,.36,1);
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Inter',sans-serif;
-    line-height:1.6;
-    overflow-x:hidden;
-  }
-  ::selection{background:var(--accent);color:#0d1117;}
-  a{color:inherit;}
-  .mono{font-family:'JetBrains Mono',monospace;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:var(--step-body);line-height:1.55;}
+  ::selection{background:var(--ink);color:#fff;}
+  img{display:block;max-width:100%;height:auto;}
+  a{color:inherit;text-underline-offset:0.2em;text-decoration-thickness:1.5px;}
+  :focus-visible{outline:2px solid var(--ink);outline-offset:3px;}
+  p{margin:0 0 1em;}
+  h1,h2,h3{margin:0;font-family:var(--display);font-weight:900;font-stretch:125%;text-transform:uppercase;letter-spacing:-0.01em;}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
 
-  .circuit-bg{
-    position:fixed;
-    inset:0;
-    z-index:0;
-    opacity:0.14;
-    pointer-events:none;
+  /* =============== the index (first screen) =============== */
+  .index{
+    position:relative;min-height:100svh;
+    background:var(--accent);color:var(--ink);
+    display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;
+    padding:28px 32px 28px;overflow:hidden;
   }
-
-  header{
-    position:sticky;
-    top:0;
-    z-index:50;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:18px 6vw;
-    background:rgba(16,20,28,0.85);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
+  .statement{
+    grid-column:5 / 13;grid-row:1;margin:0;align-self:center;
+    text-align:right;
+    font-family:var(--display);font-weight:900;font-stretch:125%;text-transform:uppercase;
+    font-size:clamp(2.4rem, 0.2rem + 6vw, 7.4rem);line-height:0.86;letter-spacing:-0.02em;
+    transform:skewY(var(--skew,0deg));transform-origin:right center;will-change:transform;
   }
-  .logo{
-    font-family:'JetBrains Mono',monospace;
-    font-weight:700;
-    font-size:1.05rem;
-    letter-spacing:0.02em;
-    display:flex;
-    align-items:center;
-    gap:8px;
+  .statement span{display:block;}
+  .portrait{
+    grid-column:1 / 5;grid-row:1;align-self:center;margin:0;max-height:62svh;
+    aspect-ratio:4/5;border-radius:8px;overflow:hidden;
   }
-  .logo .dot{
-    width:8px;height:8px;border-radius:50%;
-    background:var(--accent);
-    box-shadow:0 0 8px var(--accent);
-    animation:pulse 2.4s ease-in-out infinite;
+  .portrait img{width:100%;height:100%;object-fit:cover;}
+  .id{
+    grid-column:1 / -1;grid-row:2;align-self:end;
+    display:grid;grid-template-columns:auto repeat(4, auto) 1fr;gap:12px 40px;align-items:end;
+    padding-top:40px;font-size:var(--step-small);line-height:1.45;
   }
-  @keyframes pulse{
-    0%,100%{opacity:1;} 50%{opacity:0.35;}
-  }
-  nav ul{
-    list-style:none;
-    display:flex;
-    gap:28px;
-    margin:0;padding:0;
-    font-family:'JetBrains Mono',monospace;
-    font-size:0.85rem;
-  }
-  nav a{
-    text-decoration:none;
-    color:var(--muted);
-    transition:color .2s;
-    position:relative;
-  }
-  nav a:hover{color:var(--accent);}
-  nav .icon-link{display:flex;align-items:center;}
-  .nav-links{display:flex;align-items:center;gap:28px;}
-
-  .hero{
-    position:relative;
-    z-index:1;
-    padding:14vh 6vw 12vh;
-    max-width:920px;
-  }
-  .eyebrow{
-    font-family:'JetBrains Mono',monospace;
-    color:var(--accent);
-    font-size:0.85rem;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-bottom:22px;
-  }
-  .eyebrow::before{
-    content:"";
-    width:22px;height:1px;
-    background:var(--accent);
-    display:inline-block;
-  }
-  h1.name{
-    font-family:'JetBrains Mono',monospace;
-    font-size:clamp(2.4rem, 6vw, 4.4rem);
-    font-weight:700;
-    margin:0 0 6px;
-    line-height:1.05;
-    letter-spacing:-0.01em;
-  }
-  .name .cursor{
-    display:inline-block;
-    width:0.55ch;
-    background:var(--accent);
-    animation:blink 1s step-end infinite;
-  }
-  @keyframes blink{50%{opacity:0;}}
-  .role{
-    font-size:clamp(1.05rem,2vw,1.35rem);
-    color:var(--muted);
-    margin:0 0 28px;
-    font-weight:500;
-  }
-  .role strong{color:var(--text);font-weight:600;}
-  .pitch{
-    max-width:640px;
-    color:var(--muted);
-    font-size:1.02rem;
-    margin-bottom:36px;
-  }
-  .hero-actions{
-    display:flex;
-    gap:14px;
-    flex-wrap:wrap;
-  }
+  .id h1{font-size:var(--step-head);line-height:0.86;margin-right:24px;}
+  .id p{margin:0;}
+  .id a{text-decoration:none;}
+  .id a:hover{text-decoration:underline;}
+  .id .cta{justify-self:end;}
   .btn{
-    font-family:'JetBrains Mono',monospace;
-    font-size:0.88rem;
-    padding:12px 20px;
-    border-radius:var(--radius);
-    text-decoration:none;
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    transition:transform .15s, border-color .15s, background .15s;
-    border:1px solid var(--line);
+    display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-radius:var(--radius);
+    background:var(--ink);color:#fff !important;font-weight:500;font-size:var(--step-body);text-decoration:none !important;
+    transition:transform .3s var(--ease), background .2s;
   }
-  .btn-primary{
-    background:var(--accent);
-    color:#0d1117;
-    border-color:var(--accent);
-    font-weight:600;
-  }
-  .btn-primary:hover{transform:translateY(-2px);}
-  .btn-ghost{
-    color:var(--text);
-    background:transparent;
-  }
-  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
+  .btn:hover{transform:translateY(-2px);background:#2c3b66;}
+  .btn.orange{background:var(--accent);color:var(--ink) !important;}
+  .btn.orange:hover{background:#ffa43a;}
 
-  section{
-    position:relative;
-    z-index:1;
-    padding:9vh 6vw;
-    border-top:1px solid var(--line);
-    max-width:1180px;
-    margin:0 auto;
+  /* =============== the page below =============== */
+  .col{width:min(var(--wrap), calc(100% - 64px));margin:0 auto;}
+  section.sec, .col > section{padding:clamp(96px, 10vw, 140px) 0 0;}
+  .sec{display:grid;grid-template-columns:repeat(12,1fr);column-gap:32px;}
+  .sec > h2{grid-column:1 / 5;}
+  .sec > .body{grid-column:5 / 13;min-width:0;}
+  .col h2{font-size:var(--step-head);line-height:1;margin-bottom:28px;}
+
+  .lead{font-size:var(--step-lead);line-height:1.4;}
+  .mark{background:#fde2bf;padding:0 .15em;}
+  .facts{display:grid;grid-template-columns:repeat(4, auto);justify-content:start;gap:8px 48px;margin:40px 0 0;font-size:var(--step-small);}
+  .facts dt{color:var(--muted);}
+  .facts dd{margin:0;font-weight:500;}
+
+  .rows{list-style:none;margin:0;padding:0;}
+  .rows li{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:10px 0;}
+  .rows .l{min-width:0;}
+  .rows .l strong{font-weight:500;}
+  .rows .l span{display:block;color:var(--muted);font-size:var(--step-small);}
+  .rows .r{color:var(--muted);font-size:var(--step-small);text-align:right;white-space:nowrap;}
+  .rows a{transition:color .2s;}
+  .rows a:hover{color:#c96d00;}
+  .services li{padding:18px 0;}
+  .services li:nth-child(odd){background:var(--surface);margin:0 -18px;padding:18px;border-radius:var(--radius);}
+
+  .proj{display:grid;grid-template-columns:repeat(12,1fr);column-gap:32px;align-items:center;margin-bottom:96px;scroll-margin-top:40px;}
+  .proj .shots{grid-column:1 / 8;}
+  .proj .ptext{grid-column:8 / 13;}
+  .shots{display:grid;gap:12px;border-radius:var(--radius);overflow:hidden;}
+  .shots.phones{grid-template-columns:repeat(3,1fr);background:var(--field);padding:24px;}
+  .shots.phones img{border-radius:8px;}
+  .shots.wide{background:var(--night);padding:18px;}
+  .shots.wide img{border-radius:6px;}
+  .shots.dark{background:#111214;padding:18px;}
+  .shots.dark img{border-radius:6px;}
+  .shots img{transition:transform .6s var(--ease);}
+  .shots:hover img{transform:scale(1.02);}
+  .proj h3{font-size:var(--step-head);line-height:1;margin-bottom:8px;}
+  .proj .kind{color:var(--muted);font-size:var(--step-small);margin-bottom:18px;}
+  .proj .stack{color:var(--muted);font-size:var(--step-small);}
+  .textlink{font-weight:500;transition:color .2s;}
+  .textlink:hover{color:#c96d00;}
+  .others{display:grid;grid-template-columns:repeat(12,1fr);column-gap:32px;}
+  .others h3{grid-column:1 / 5;font-family:var(--text);font-weight:500;font-stretch:100%;text-transform:none;font-size:var(--step-body);letter-spacing:0;margin-bottom:12px;}
+  .others .rows{grid-column:5 / 13;}
+
+  .exp .rows li{padding:14px 0;}
+  .exp .rows .l strong{font-size:var(--step-lead);font-weight:500;line-height:1.25;}
+  .group{color:var(--muted);font-size:var(--step-small);margin:0 0 4px;}
+  .toolcols{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+  .toolcols .rows li{display:block;padding:6px 0;}
+  .toolcols .rows .r{display:block;text-align:left;}
+  .tinted.field{background:var(--field);}
+  .tinted.field .rows .l span, .tinted.field .rows .r{color:#4a5066;}
+  .tinted > h2{grid-column:1 / -1 !important;margin-bottom:40px !important;}
+  .tinted > .body{grid-column:1 / -1 !important;}
+  .tinted{background:var(--surface);border-radius:var(--radius);padding:64px 48px !important;margin-top:clamp(96px, 10vw, 140px);}
+
+  .contact{background:var(--accent);border-radius:var(--radius);padding:64px 48px !important;margin-top:clamp(96px, 10vw, 140px);}
+  .contact > h2{grid-column:1 / 6;font-size:clamp(2rem, 1.2rem + 2.4vw, 3.25rem);line-height:0.95;}
+  .contact > .body{grid-column:7 / 13;}
+  .ask label{display:block;margin-bottom:12px;font-weight:500;}
+  .ask .field{position:relative;max-width:520px;}
+  .ask input{width:100%;height:64px;border:0;border-radius:var(--radius);background:#fff;color:var(--ink);font:inherit;padding:0 72px 0 20px;}
+  .ask input::placeholder{color:#6d7286;}
+  .ask input:focus{outline:2px solid var(--ink);outline-offset:-2px;}
+  .ask button{position:absolute;right:10px;top:10px;width:44px;height:44px;border-radius:50%;border:0;background:var(--ink);color:#fff;cursor:pointer;display:grid;place-items:center;transition:transform .3s var(--ease);}
+  .ask button:hover{transform:translateX(3px);}
+  .ask-note{font-size:var(--step-small);margin:14px 0 48px;}
+  .reach{display:grid;grid-template-columns:110px 1fr;gap:10px 16px;font-size:var(--step-small);margin:0;}
+  .reach dd{margin:0;font-weight:500;}
+
+  footer{margin:48px 0 0;padding:28px 32px 32px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:var(--step-small);color:var(--muted);}
+
+  /* =============== experience timeline =============== */
+  .xp{
+    background:var(--ink);color:#fff;border-radius:var(--radius);
+    margin-top:clamp(96px, 10vw, 140px);padding:clamp(48px, 6vw, 88px) clamp(24px, 4vw, 64px) !important;
   }
-  .section-head{
-    display:flex;
-    align-items:baseline;
-    gap:16px;
-    margin-bottom:44px;
-  }
-  .section-head .tag{
-    font-family:'JetBrains Mono',monospace;
+  .xp h2{color:#fff;font-size:clamp(2rem, 1.2rem + 2.4vw, 3.25rem);line-height:0.95;margin-bottom:16px;}
+  .xp-head{display:grid;grid-template-columns:repeat(12,1fr);column-gap:32px;align-items:end;margin-bottom:72px;}
+  .xp-head h2{grid-column:1 / 8;margin:0;}
+  .xp-head p{grid-column:8 / 13;margin:0;color:#c9cfdf;}
+  .xp-year, .xp-pubs{display:grid;grid-template-columns:repeat(12,1fr);column-gap:32px;padding:40px 0;}
+  .xp-year + .xp-year, .xp-year + .xp-pubs{padding-top:48px;}
+  .xp .y{
+    grid-column:1 / 4;margin:0;
+    font-family:var(--display);font-weight:900;font-stretch:125%;
+    font-size:clamp(3rem, 1.6rem + 3.6vw, 5.5rem);line-height:0.85;letter-spacing:-0.02em;
     color:var(--accent);
-    font-size:0.85rem;
   }
-  .section-head h2{
-    font-size:clamp(1.5rem,3vw,2rem);
-    margin:0;
-    font-weight:700;
+  .xp .y.small{grid-column:1 / -1;font-size:var(--step-head);text-transform:uppercase;line-height:1;margin-bottom:32px;}
+  .xp ol, .xp ul{grid-column:4 / 13;list-style:none;margin:0;padding:0;display:grid;gap:40px;}
+  .xp-year li{display:grid;grid-template-columns:1fr auto;column-gap:32px;}
+  .xp-year li > *{grid-column:1;margin:0;}
+  .xp-year h3{font-family:var(--text);font-stretch:100%;text-transform:none;letter-spacing:0;font-weight:500;font-size:var(--step-lead);line-height:1.25;}
+  .xp .org{color:var(--accent);font-weight:500;margin:4px 0 10px;}
+  .xp-year li p:not(.org):not(.when){color:#dfe3ee;max-width:46ch;}
+  .xp .when{grid-column:2 !important;grid-row:1;color:#c9cfdf;font-size:var(--step-small);white-space:nowrap;padding-top:6px;}
+  .xp-pubs ul{gap:18px;}
+  .xp-pubs li strong{display:block;font-weight:500;}
+  .xp-pubs li span{color:#c9cfdf;font-size:var(--step-small);}
+  /* =============== motion =============== */
+  @media (prefers-reduced-motion:no-preference){
+    .js .statement span{opacity:0;transform:translateY(40px);animation:rise 900ms var(--ease) forwards;animation-delay:calc(var(--i) * 70ms + 100ms);}
+    .js .id{opacity:0;animation:fade 700ms var(--ease) 700ms forwards;}
+    .js [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease), transform 1s var(--ease);transition-delay:calc(var(--d,0) * 80ms);}
+    .js [data-reveal].in{opacity:1;transform:none;}
   }
-  .section-head .rule{
-    flex:1;
-    height:1px;
-    background:var(--line);
-  }
+  @keyframes rise{to{opacity:1;transform:none;}}
+  @keyframes fade{to{opacity:1;}}
 
-  .about-grid{
-    display:grid;
-    grid-template-columns:1.3fr 1fr;
-    gap:60px;
-    align-items:start;
+  /* =============== tablet =============== */
+  @media (max-width: 1000px){
+    .statement{grid-column:1 / -1;grid-row:2;text-align:left;padding-top:32px;}
+    .portrait{grid-column:1 / 7;grid-row:1;}
+    .id{grid-row:3;}
+    .id{grid-template-columns:1fr 1fr;}
+    .id h1{grid-column:1 / -1;margin-bottom:12px;}
+    .id .cta{grid-column:1 / -1;justify-self:start;margin-top:12px;}
+    .sec > h2, .sec > .body, .contact > h2, .contact > .body{grid-column:1 / -1;}
+    .proj .shots, .proj .ptext{grid-column:1 / -1;}
+    .proj .shots{margin-bottom:24px;}
+    .others h3, .others .rows{grid-column:1 / -1;}
+    .facts{grid-template-columns:1fr 1fr;gap:12px 24px;}
+    .xp-head h2, .xp-head p, .xp .y, .xp ol, .xp ul{grid-column:1 / -1;}
+    .xp-head p{margin-top:16px;}
+    .xp .y{margin-bottom:24px;}
   }
-  .about-grid p{color:var(--muted);margin-bottom:16px;}
-  .about-grid p strong{color:var(--text);}
-  .chip-panel{
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:22px;
-  }
-  .chip-panel .label{
-    font-family:'JetBrains Mono',monospace;
-    font-size:0.78rem;
-    color:var(--muted);
-    text-transform:uppercase;
-    letter-spacing:0.08em;
-    margin-bottom:14px;
-    display:block;
-  }
-  .chips{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-  }
-  .chip{
-    font-family:'JetBrains Mono',monospace;
-    font-size:0.78rem;
-    padding:6px 10px;
-    border:1px solid var(--line);
-    border-radius:4px;
-    color:var(--accent-2);
-    background:var(--bg-alt);
-  }
-
-  .timeline{
-    border-left:1px solid var(--line);
-    padding-left:34px;
-    display:flex;
-    flex-direction:column;
-    gap:38px;
-  }
-  .t-item{position:relative;}
-  .t-item::before{
-    content:"";
-    position:absolute;
-    left:-40px;
-    top:4px;
-    width:9px;height:9px;
-    border-radius:50%;
-    background:var(--bg);
-    border:2px solid var(--accent);
-  }
-  .t-year{
-    font-family:'JetBrains Mono',monospace;
-    color:var(--accent);
-    font-size:0.82rem;
-    margin-bottom:6px;
-    display:block;
-  }
-  .t-item h3{margin:0 0 6px;font-size:1.15rem;}
-  .t-item p{margin:0;color:var(--muted);}
-
-  .li-callout{
-    margin-top:38px;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:24px 28px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-    flex-wrap:wrap;
-    background:linear-gradient(135deg, rgba(79,209,197,0.06), transparent 60%);
-    position:relative;
-    overflow:hidden;
-  }
-  .li-callout::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    border-left:2px solid var(--accent);
-  }
-  .li-callout-text{display:flex;align-items:center;gap:16px;}
-  .li-callout-icon{
-    width:42px;height:42px;
-    border-radius:8px;
-    background:var(--bg-alt);
-    display:flex;align-items:center;justify-content:center;
-    color:var(--accent);
-    flex-shrink:0;
-  }
-  .li-callout h4{margin:0 0 4px;font-size:1rem;}
-  .li-callout p{margin:0;color:var(--muted);font-size:0.9rem;}
-
-  .projects-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(320px,1fr));
-    gap:24px;
-  }
-  .card{
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:26px;
-    display:flex;
-    flex-direction:column;
-    transition:border-color .2s, transform .2s;
-  }
-  .card:hover{border-color:var(--accent);transform:translateY(-3px);}
-  .card-head{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:14px;
-  }
-  .card-head h3{margin:0;font-size:1.15rem;font-family:'JetBrains Mono',monospace;}
-  .card-icon{
-    width:34px;height:34px;
-    border-radius:4px;
-    background:var(--bg-alt);
-    display:flex;align-items:center;justify-content:center;
-    color:var(--accent);
-    flex-shrink:0;
-  }
-  .card p.desc{color:var(--muted);font-size:0.95rem;flex:1;margin-bottom:18px;}
-  .card .chips{margin-bottom:18px;}
-  .card .sub{
-    border-top:1px solid var(--line);
-    padding-top:12px;
-    margin-bottom:14px;
-    font-size:0.88rem;
-  }
-  .card .sub-item{margin-bottom:8px;color:var(--muted);}
-  .card .sub-item strong{color:var(--text);}
-  .card-links{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-  }
-  .card-links a{
-    font-family:'JetBrains Mono',monospace;
-    font-size:0.82rem;
-    text-decoration:none;
-    color:var(--accent);
-    display:flex;align-items:center;gap:6px;
-  }
-  .card-links a:hover{color:var(--accent-2);}
-
-  .contact-wrap{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    flex-wrap:wrap;
-    gap:32px;
-  }
-  .contact-copy p{color:var(--muted);max-width:480px;}
-  .contact-links{display:flex;gap:14px;flex-wrap:wrap;}
-
-  footer{
-    padding:28px 6vw 40px;
-    text-align:center;
-    color:var(--muted);
-    font-family:'JetBrains Mono',monospace;
-    font-size:0.78rem;
-  }
-
-  @media (max-width:820px){
-    .about-grid{grid-template-columns:1fr;}
-    nav ul{display:none;}
-    header{padding:16px 5vw;}
-    section{padding:8vh 5vw;}
-    .li-callout{flex-direction:column;align-items:flex-start;}
-  }
-  @media (prefers-reduced-motion: reduce){
-    *{animation:none !important; transition:none !important;}
+  /* =============== phone =============== */
+  @media (max-width: 640px){
+    .index{padding:20px;}
+    .statement{font-size:8.6vw;padding-top:24px;}
+    .portrait{grid-column:1 / 8;max-height:none;}
+    .id h1{order:0;}
+    .id .cta{order:1;margin:4px 0 8px;}
+    .id p{order:2;}
+    .index{column-gap:12px;}
+    .id{grid-template-columns:1fr;gap:14px;}
+    .col{width:calc(100% - 40px);}
+    .sec, .proj, .others{display:block;}
+    .shots.phones{padding:14px;gap:8px;}
+    .shots.wide, .shots.dark{padding:10px;}
+    .rows li{flex-direction:column;gap:2px;}
+    .rows .r{text-align:left;white-space:normal;}
+    .services li:nth-child(odd){margin:0 -14px;padding:18px 14px;}
+    .toolcols{grid-template-columns:1fr;gap:24px;}
+    .tinted, .contact{padding:40px 20px !important;}
+    .xp-head, .xp-year, .xp-pubs{display:block;}
+    .xp-year li{grid-template-columns:1fr;}
+    .xp .when{grid-column:1 !important;grid-row:auto;padding:0;order:-1;margin-bottom:4px !important;}
+    .reach{grid-template-columns:1fr;gap:2px;}
+    .reach dd{margin-bottom:14px;}
+    footer{padding:28px 20px;}
   }
 </style>
 </head>
 <body>
 
-<svg class="circuit-bg" viewBox="0 0 1200 1400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-  <g stroke="#4fd1c5" stroke-width="1" fill="none">
-    <path d="M0 120 H260 V220 H520 V120 H900"/>
-    <path d="M0 340 H140 V500 H420 V620 H1200"/>
-    <path d="M1200 200 H860 V60"/>
-    <path d="M60 700 V900 H340 V1040 H700"/>
-    <path d="M1200 900 H980 V760 H700"/>
-    <path d="M0 1100 H240 V1240 H600 V1200 H1200"/>
-  </g>
-  <g fill="#4fd1c5">
-    <circle cx="260" cy="120" r="3"/><circle cx="520" cy="220" r="3"/><circle cx="900" cy="120" r="3"/>
-    <circle cx="140" cy="340" r="3"/><circle cx="420" cy="620" r="3"/><circle cx="860" cy="200" r="3"/>
-    <circle cx="340" cy="700" r="3"/><circle cx="700" cy="1040" r="3"/><circle cx="980" cy="900" r="3"/>
-    <circle cx="240" cy="1100" r="3"/><circle cx="600" cy="1240" r="3"/>
-  </g>
-</svg>
+<!-- =============== primeira tela: índice dos projetos =============== -->
+<header class="index">
+  <figure class="portrait">
+    <img src="assets/rafael.jpg" width="640" height="800" alt="Rafael Kluge sorrindo, de camiseta branca, com montanhas e céu azul ao fundo">
+  </figure>
 
-<header>
-  <div class="logo"><span class="dot"></span>rafaklugee<span class="mono" style="color:var(--muted)">.io</span></div>
-  <nav>
-    <ul class="nav-links">
-      <li><a href="#sobre">sobre</a></li>
-      <li><a href="#formacao">formação</a></li>
-      <li><a href="#projetos">projetos</a></li>
-      <li><a href="#contato">contato</a></li>
-      <li class="icon-link"><a href="https://github.com/rafaklugee" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.95.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.78 1.19 1.78 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.18 1.82 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.08.78 2.17 0 1.57-.01 2.83-.01 3.22 0 .3.2.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
-      </a></li>
-    </ul>
-  </nav>
+  <p class="statement" aria-label="Da pesquisa em IA ao site do seu negócio">
+    <span style="--i:0">Da pesquisa</span>
+    <span style="--i:1">em IA ao</span>
+    <span style="--i:2">site do seu</span>
+    <span style="--i:3">negócio</span>
+  </p>
+
+  <div class="id">
+    <h1>Rafael<br>Kluge</h1>
+    <p>Rafael Ribeiro Kluge<br>Ciência da Computação, UFPR</p>
+    <p>Curitiba, PR<br><a href="mailto:rafaelkluge2010@gmail.com">rafaelkluge2010@gmail.com</a></p>
+    <p>Livre para freelances<br>até fevereiro de 2027</p>
+    <p><a href="#sobre">Sobre mim</a><br><a href="#projetos">Projetos</a><br><a href="#contato">Contato</a></p>
+    <div class="cta"><a class="btn" href="https://wa.me/5547996305089?text=Oi%20Rafael%2C%20vi%20seu%20portf%C3%B3lio%20e%20quero%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener">Conversar no WhatsApp</a></div>
+  </div>
 </header>
 
-<section class="hero" style="border-top:none;padding-top:14vh;">
-  <div class="eyebrow mono">status: online</div>
-  <h1 class="name mono">Rafael Ribeiro Kluge<span class="cursor">&nbsp;</span></h1>
-  <p class="role">Estudante de <strong>Ciência da Computação</strong> na UFPR</p>
-  <p class="pitch">Focado em resolução de problemas: da solução mais simples à automação de processos complexos. Acredito que, quando um processo é bem compreendido, é possível encontrar soluções eficientes, práticas e bem estruturadas para qualquer desafio.</p>
-  <div class="hero-actions">
-    <a class="btn btn-primary" href="#projetos">Ver projetos</a>
-    <a class="btn btn-ghost" href="#contato">Contato</a>
-  </div>
-</section>
+<main class="col">
 
-<section id="sobre">
-  <div class="section-head">
-    <span class="tag mono">01</span>
-    <h2>Sobre</h2>
-    <div class="rule"></div>
-  </div>
-  <div class="about-grid">
-    <div>
-      <p>Sou estudante de <strong>Ciência da Computação na Universidade Federal do Paraná (UFPR)</strong>, atualmente cursando disciplinas de sistemas operacionais, teoria dos grafos, redes de computadores e otimização combinatória.</p>
-      <p>Além da graduação, participo de um <strong>projeto de iniciação científica</strong> voltado ao mapeamento de experiências em zonas de conflito usando técnicas de Machine Learning. Também já realizei palestras e apresentações de projetos na <strong>Semana Acadêmica de Computação e Informática</strong> e <strong>Semana Integrada de Ensino, Pesquisa e Extensão</strong>, além de ter artigo publicado no <strong>Congresso da Sociedade Brasileira de Computação</strong> sobre o desenvolvimento de um tradutor de libras.</p>
+  <section id="sobre" class="sec" aria-label="Sobre mim">
+    <h2 data-reveal>Sobre mim</h2>
+    <div class="body">
+      <p class="lead" data-reveal style="--d:1">Estudo Ciência da Computação na UFPR e crio sites, sistemas e apps web para negócios. Faço tudo, do desenho das telas ao servidor no ar.</p>
+      <p data-reveal style="--d:2">Gosto mais da parte que vem antes do código: entender como alguém trabalha, o que os clientes dele perguntam todo dia e onde o tempo se perde. Quando isso fica claro, a solução costuma ser <span class="mark">mais simples do que parecia</span>.</p>
+      <p data-reveal style="--d:3">Acabei de voltar do Canadá, onde passei três meses como pesquisador na Université de Moncton, com bolsa Mitacs Globalink, trabalhando com deep learning e machine learning quântico aplicados ao diagnóstico de câncer. Antes fui EMIT Trainee na ExxonMobil e bolsista do PET Computação, e faço iniciação científica pelo CNPq desde 2024. Até começar meu próximo estágio, em fevereiro de 2027, estou me dedicando a projetos freelance. Publiquei um artigo no Congresso da Sociedade Brasileira de Computação, sobre um tradutor de Libras, e apresentei projetos na Semana Acadêmica de Computação e Informática e na SIEPE da UFPR.</p>
+      <dl class="facts" data-reveal style="--d:4">
+        <div><dt>Formação</dt><dd>Ciência da Computação, UFPR</dd></div>
+        <div><dt>Cidade</dt><dd>Curitiba, PR</dd></div>
+        <div><dt>Freelances</dt><dd>Até fevereiro de 2027</dd></div>
+        <div><dt>Agenda</dt><dd>Aberta agora</dd></div>
+      </dl>
     </div>
-    <div class="chip-panel">
-      <span class="label">Ferramentas</span>
-      <div class="chips">
-        <span class="chip">C</span>
-        <span class="chip">C++</span>
-        <span class="chip">HTML</span>
-        <span class="chip">CSS</span>
-        <span class="chip">JavaScript</span>
-        <span class="chip">PostgreSQL</span>
-        <span class="chip">Node.js</span>
-        <span class="chip">Lua</span>
-        <span class="chip">Java</span>
-        <span class="chip">Python</span>
-        <span class="chip">Haskell</span>
-        <span class="chip">Shell Script</span>
-        <span class="chip">Azure</span>
-        <span class="chip">DBT</span>
-        <span class="chip">DataDog</span>
-        <span class="chip">Snowflake</span>
+  </section>
+
+  <section id="servicos" class="sec" aria-label="O que eu faço">
+    <h2 data-reveal>O que eu faço</h2>
+    <div class="body">
+      <ul class="rows services">
+        <li data-reveal style="--d:1"><div class="l"><strong>Sites para negócios</strong><span>Página que explica o que você faz, com WhatsApp, horários, preços e mapa. Rápida no celular e fácil de atualizar.</span></div><div class="r">Sob encomenda</div></li>
+        <li data-reveal style="--d:2"><div class="l"><strong>Sistemas para empresas</strong><span>Agenda, cadastro de clientes, orçamentos e faturamento num lugar só, feitos para o jeito como a sua equipe trabalha.</span></div><div class="r">Ex.: FIKC</div></li>
+        <li data-reveal style="--d:3"><div class="l"><strong>Apps web sob medida</strong><span>Login, fotos, pagamento por Pix e um painel para você acompanhar tudo, sem precisar baixar nada.</span></div><div class="r">Ex.: Nosso Dia</div></li>
+        <li data-reveal style="--d:4"><div class="l"><strong>Dados e mapas</strong><span>Coleta automática, banco de dados, classificação com machine learning e visualização em mapa.</span></div><div class="r">Ex.: Conflitos Urbanos</div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projetos" aria-label="Projetos">
+    <h2 data-reveal>Projetos</h2>
+
+    <article class="proj" id="nosso-dia">
+      <div class="shots phones" data-reveal>
+        <img src="assets/nd-home-m.jpg" width="640" height="1376" loading="lazy" alt="Nosso Dia no celular: alianças douradas e o título Cada convidado vira fotógrafo do casamento">
+        <img src="assets/nd-walk2.jpg" width="640" height="1376" loading="lazy" alt="Mundo 3D da festa com pista de dança, bolo e polaroides penduradas">
+        <img src="assets/nd-album2.jpg" width="640" height="1376" loading="lazy" alt="Álbum de Ana e João com abas Casório e Festa e uma grade de fotos">
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="formacao">
-  <div class="section-head">
-    <span class="tag mono">02</span>
-    <h2>Formação, Experiência e Cursos</h2>
-    <div class="rule"></div>
-  </div>
-  <div class="timeline">
-    <div class="t-item">
-      <span class="t-year mono">em andamento</span>
-      <h3>Bacharelado em Ciência da Computação — UFPR</h3>
-      <p>Previsão de conclusão: dezembro de 2028</p>
-    </div>
-  </div>
-
-  <div class="li-callout">
-    <div class="li-callout-text">
-      <div class="li-callout-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+      <div class="ptext">
+        <h3 data-reveal>Nosso Dia</h3>
+        <p class="kind" data-reveal>App web para casamentos, 2026</p>
+        <p data-reveal style="--d:1">Os convidados tiram fotos pelo celular durante a festa, sem baixar app nem criar conta: basta o QR code da mesa. As fotos chegam ao casal na hora e viram álbum, filme e um pequeno mundo 3D do casamento, com lista de presentes paga por Pix.</p>
+        <p class="stack" data-reveal style="--d:2">Next.js, React, TypeScript, Supabase e Three.js</p>
       </div>
-      <div>
-        <h4>Histórico completo de experiências e cursos</h4>
-        <p>Cargos, certificações e cursos complementares estão atualizados no meu LinkedIn.</p>
+    </article>
+
+    <article class="proj" id="conflitos">
+      <div class="shots wide" data-reveal>
+        <img src="assets/cu-radar.jpg" width="1440" height="900" loading="lazy" alt="Radar de conflitos: lista de temas ao lado do mapa de Curitiba com marcadores vermelhos">
       </div>
+      <div class="ptext">
+        <h3 data-reveal>Conflitos Urbanos</h3>
+        <p class="kind" data-reveal>Iniciação científica no CEPPUR, UFPR</p>
+        <p data-reveal style="--d:1">Um robô lê portais de notícia, um modelo de machine learning separa as que falam de conflito urbano e o endereço vira um ponto no mapa. Hoje são 705 notícias de Curitiba e região, de 2016 a 2026, filtráveis por tema.</p>
+        <p class="stack" data-reveal style="--d:2">Python, FastAPI, PostgreSQL, React e Leaflet</p>
+        <p data-reveal style="--d:3"><a class="textlink" href="https://conflitos-urbanos.pages.dev" target="_blank" rel="noopener">Abrir o radar</a></p>
+      </div>
+    </article>
+
+    <article class="proj" id="fikc">
+      <div class="shots dark" data-reveal>
+        <img src="assets/fikc-d.jpg" width="1440" height="900" loading="lazy" alt="Página do FIKC: Seu sistema deveria se pagar, não ser só uma agenda, com painel de faturamento e orçamentos">
+      </div>
+      <div class="ptext">
+        <h3 data-reveal>FIKC</h3>
+        <p class="kind" data-reveal>Sistema para consultórios odontológicos, no ar</p>
+        <p data-reveal style="--d:1">Agenda, orçamentos, retornos e faturamento num lugar só. O sistema mostra onde o consultório está perdendo dinheiro, como o orçamento aprovado que parou ou o retorno que ninguém chamou, e ajuda a recuperar.</p>
+        <p class="stack" data-reveal style="--d:2">Node.js, JavaScript e PostgreSQL</p>
+        <p data-reveal style="--d:3"><a class="textlink" href="https://www.fikcsolutions.com.br" target="_blank" rel="noopener">Abrir o site</a></p>
+      </div>
+    </article>
+
+    <div class="others" id="outros">
+      <h3 data-reveal>Outros projetos</h3>
+      <ul class="rows">
+        <li data-reveal><div class="l"><strong><a href="https://rafaklugee.github.io/tatik/" target="_blank" rel="noopener">Tatik</a></strong><span>Prancheta de basquete em 2D e 3D para técnicos</span></div><div class="r">App web</div></li>
+        <li data-reveal><div class="l"><strong><a href="https://rafaklugee.github.io/bicharada-da-sorte/" target="_blank" rel="noopener">Bicharada da Sorte</a></strong><span>Jogo de plataforma em pixel art, jogável no navegador</span></div><div class="r">Jogo</div></li>
+        <li data-reveal><div class="l"><strong><a href="https://github.com/rafaklugee/PET-GAME" target="_blank" rel="noopener">PET-GAME</a></strong><span>Jogo 8-bit que ensina circuitos digitais, em Lua</span></div><div class="r">Jogo didático</div></li>
+        <li data-reveal><div class="l"><strong><a href="https://github.com/rafaklugee/prog2" target="_blank" rel="noopener">VINAc e Run-n-Gun</a></strong><span>Compactador de arquivos e jogo de ação, em C</span></div><div class="r">Faculdade</div></li>
+      </ul>
     </div>
-    <a class="btn btn-primary" href="https://www.linkedin.com/in/rafaelribeirokluge/" target="_blank" rel="noopener">
-      Ver no LinkedIn →
-    </a>
-  </div>
-</section>
+  </section>
 
-<section id="projetos">
-  <div class="section-head">
-    <span class="tag mono">03</span>
-    <h2>Projetos</h2>
-    <div class="rule"></div>
-  </div>
-  <div class="projects-grid">
+  <section id="experiencia" class="xp" aria-labelledby="xp-title">
+    <div class="xp-head">
+      <h2 id="xp-title" data-reveal>Experiência</h2>
+      <p data-reveal style="--d:1">Pesquisa no Brasil e no Canadá, indústria e universidade, do mais recente ao mais antigo.</p>
+    </div>
 
-    <div class="card">
-      <div class="card-head">
-        <h3>FIKC</h3>
-        <div class="card-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg>
+    <div class="xp-year">
+      <p class="y" data-reveal>2026</p>
+      <ol>
+        <li data-reveal style="--d:1">
+          <h3>Pesquisador visitante</h3>
+          <p class="org">Université de Moncton, Canadá, com bolsa Mitacs Globalink</p>
+          <p>Três meses no Departamento de Informática, com deep learning e machine learning quântico para o diagnóstico de câncer em tomografias.</p>
+          <p class="when">ago. a out. 2026</p>
+        </li>
+        <li data-reveal style="--d:2">
+          <h3>EMIT Trainee</h3>
+          <p class="org">ExxonMobil, Curitiba</p>
+          <p>Programa de trainee em tecnologia da informação.</p>
+          <p class="when">fev. a jul. 2026</p>
+        </li>
+      </ol>
+    </div>
+
+    <div class="xp-year">
+      <p class="y" data-reveal>2025</p>
+      <ol>
+        <li data-reveal style="--d:1">
+          <h3>Iniciação científica, CNPq</h3>
+          <p class="org">CEPPUR, UFPR</p>
+          <p>Mapeamento de conflitos urbanos e rastreamento automático de notícias de protesto com machine learning. Virou o radar Conflitos Urbanos.</p>
+          <p class="when">desde ago. 2025</p>
+        </li>
+      </ol>
+    </div>
+
+    <div class="xp-year">
+      <p class="y" data-reveal>2024</p>
+      <ol>
+        <li data-reveal style="--d:1">
+          <h3>Bolsista, PET Computação</h3>
+          <p class="org">UFPR</p>
+          <p>Pesquisa, ensino e extensão para a comunidade de dentro e de fora da universidade.</p>
+          <p class="when">mai. 2024 a ago. 2025</p>
+        </li>
+        <li data-reveal style="--d:2">
+          <h3>Iniciação científica, CNPq</h3>
+          <p class="org">Análise de dados meteorológicos</p>
+          <p>Automação do processamento de grandes volumes de dados com scripts em Bash.</p>
+          <p class="when">abr. a set. 2024</p>
+        </li>
+        <li data-reveal style="--d:3">
+          <h3>Bacharelado em Ciência da Computação</h3>
+          <p class="org">Universidade Federal do Paraná</p>
+          <p>Transferido da UDESC Joinville, onde cursei o primeiro ano, em 2023.</p>
+          <p class="when">desde fev. 2024</p>
+        </li>
+      </ol>
+    </div>
+
+    <div class="xp-pubs">
+      <p class="y small" data-reveal>Publicações</p>
+      <ul>
+        <li data-reveal style="--d:1"><strong>Tradutor de Libras</strong><span>Artigo publicado no Congresso da Sociedade Brasileira de Computação</span></li>
+        <li data-reveal style="--d:2"><strong>Câncer de rim em tomografia</strong><span>Segmentação 3D com deep learning e classificação com machine learning quântico, em preparação</span></li>
+        <li data-reveal style="--d:3"><strong>Palestras na UFPR</strong><span>Semana Acadêmica de Computação e Informática e SIEPE</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="cursos" class="sec tinted field" aria-label="Cursos e certificações">
+    <h2 data-reveal>Cursos</h2>
+    <div class="body">
+      <ul class="rows">
+        <li data-reveal><div class="l"><strong>GitHub Advanced Security (GHAS)</strong><span>Segurança de código no GitHub</span></div><div class="r">certificação</div></li>
+        <li data-reveal><div class="l"><strong>ASP.NET Core Web API Fundamentals</strong><span>APIs web com C# e .NET</span></div><div class="r">certificação</div></li>
+        <li data-reveal><div class="l"><strong>Learning Git and GitHub</strong><span>Versionamento e colaboração</span></div><div class="r">certificação</div></li>
+        <li data-reveal><div class="l"><strong>Desenvolvimento de Jogos</strong><span>Criação de jogos digitais</span></div><div class="r">curso</div></li>
+        <li data-reveal><div class="l"><strong>HTML Básico e Avançado</strong><span>Estrutura e semântica de páginas web</span></div><div class="r">curso</div></li>
+        <li data-reveal><div class="l"><strong>Perfil completo</strong><span>Todos os cargos, cursos e certificados</span></div><div class="r"><a href="https://www.linkedin.com/in/rafaelribeirokluge/" target="_blank" rel="noopener">LinkedIn</a></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="ferramentas" class="sec tinted" aria-label="Ferramentas">
+    <h2 data-reveal>Ferramentas</h2>
+    <div class="body toolcols">
+      <div><p class="group" data-reveal>Front-end</p>
+      <ul class="rows">
+        <li data-reveal><div class="l"><strong>HTML, CSS, JavaScript, TypeScript</strong></div><div class="r">sites</div></li>
+        <li data-reveal><div class="l"><strong>React, Next.js</strong></div><div class="r">apps web</div></li>
+        <li data-reveal><div class="l"><strong>Three.js</strong></div><div class="r">3D no navegador</div></li>
+      </ul></div>
+      <div><p class="group" data-reveal>Back-end e dados</p>
+      <ul class="rows">
+        <li data-reveal><div class="l"><strong>Node.js, Python, FastAPI</strong></div><div class="r">servidores e APIs</div></li>
+        <li data-reveal><div class="l"><strong>PostgreSQL, Supabase</strong></div><div class="r">bancos de dados</div></li>
+        <li data-reveal><div class="l"><strong>Azure, DBT, Snowflake, Datadog</strong></div><div class="r">nuvem e dados</div></li>
+      </ul></div>
+      <div><p class="group" data-reveal>IA e dados</p>
+      <ul class="rows">
+        <li data-reveal><div class="l"><strong>Deep learning, machine learning quântico</strong></div><div class="r">pesquisa</div></li>
+        <li data-reveal><div class="l"><strong>Azure DevOps, Bash</strong></div><div class="r">automação</div></li>
+      </ul>
+      <p class="group" data-reveal style="margin-top:28px">Linguagens da faculdade</p>
+      <ul class="rows">
+        <li data-reveal><div class="l"><strong>C, C++, C#, Java, Lua, Haskell</strong></div><div class="r">sistemas e jogos</div></li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section id="contato" class="sec contact" aria-label="Contato">
+    <h2 data-reveal>Vamos conversar</h2>
+    <div class="body">
+      <form class="ask" action="https://wa.me/5547996305089" method="get" target="_blank" data-reveal style="--d:1">
+        <label for="ask-name">Escreva o nome do seu negócio e me chame</label>
+        <div class="field">
+          <input id="ask-name" name="text" type="text" placeholder="Ex.: Padaria da Rosa" autocomplete="organization" required>
+          <button type="submit" aria-label="Abrir conversa no WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
         </div>
-      </div>
-      <p class="desc">Secretária virtual: aplicação web para agendamento de reuniões, com áreas de login separadas para administrador e cliente, e módulo de relatórios.</p>
-      <div class="chips">
-        <span class="chip">Node.js</span><span class="chip">JavaScript</span><span class="chip">PostgreSQL</span>
-      </div>
-      <div class="card-links">
-        <a href="https://github.com/rafaklugee/FIKC" target="_blank" rel="noopener">→ ver repositório</a>
-      </div>
+      </form>
+      <p class="ask-note" data-reveal style="--d:2">Abre o WhatsApp com a mensagem pronta para mim. Estou com agenda livre para freelances até fevereiro de 2027.</p>
+      <dl class="reach" data-reveal style="--d:3">
+        <dt>WhatsApp</dt><dd><a href="https://wa.me/5547996305089" target="_blank" rel="noopener">(47) 99630-5089</a></dd>
+        <dt>E-mail</dt><dd><a href="mailto:rafaelkluge2010@gmail.com">rafaelkluge2010@gmail.com</a></dd>
+        <dt>Também em</dt><dd><a href="https://www.linkedin.com/in/rafaelribeirokluge/" target="_blank" rel="noopener">LinkedIn</a> e <a href="https://github.com/rafaklugee" target="_blank" rel="noopener">GitHub</a></dd>
+      </dl>
     </div>
+  </section>
+</main>
 
-    <div class="card">
-      <div class="card-head">
-        <h3>PET-GAME</h3>
-        <div class="card-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="7" width="16" height="10" rx="2"/><path d="M9 12h.01M15 12h.01M7 10v4M17 10v4"/></svg>
-        </div>
-      </div>
-      <p class="desc">Jogo 8-bit sobre circuitos digitais, ensinando de forma interativa os conceitos introdutórios da matéria: portas lógicas, operações binárias e álgebra booleana.</p>
-      <div class="chips">
-        <span class="chip">Jogo Didático</span><span class="chip">Circuitos Digitais</span>
-      </div>
-      <div class="card-links">
-        <a href="https://github.com/rafaklugee/PET-GAME" target="_blank" rel="noopener">→ ver repositório</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-head">
-        <h3>PROGRAMAÇÃO EM C</h3>
-        <div class="card-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 4 3 12l5 8M16 4l5 8-5 8"/></svg>
-        </div>
-      </div>
-      <p class="desc">Repositório com os principais trabalhos da disciplina de Programação 2, com destaque para dois projetos em C.</p>
-      <div class="sub">
-        <div class="sub-item"><strong>A1-VINAc</strong> — compactador de arquivos criado do zero, inspirado em formatos como .zip e .tgz.</div>
-        <div class="sub-item"><strong>A3-Run-n-Gun</strong> — jogo estilo run-n-gun desenvolvido em C com a biblioteca Allegro.</div>
-      </div>
-      <div class="chips">
-        <span class="chip">C</span><span class="chip">Allegro</span>
-      </div>
-      <div class="card-links">
-        <a href="https://github.com/rafaklugee/prog2" target="_blank" rel="noopener">→ ver repositório</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section id="contato">
-  <div class="section-head">
-    <span class="tag mono">04</span>
-    <h2>Contato</h2>
-    <div class="rule"></div>
-  </div>
-  <div class="contact-wrap">
-    <div class="contact-copy">
-      <p>Aberto a conversar sobre projetos e oportunidades, ou só trocar uma ideia sobre computação, programação e jogos :)</p>
-    </div>
-    <div class="contact-links">
-      <a class="btn btn-primary" href="https://www.linkedin.com/in/rafaelribeirokluge/" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
-        LinkedIn
-      </a>
-      <a class="btn btn-ghost" href="https://github.com/rafaklugee" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.95.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.78 1.19 1.78 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.18 1.82 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.08.78 2.17 0 1.57-.01 2.83-.01 3.22 0 .3.2.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
-        GitHub
-      </a>
-      <a class="btn btn-ghost" href="mailto:rafaelkluge2010@gmail.com">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2Z"/><path d="m22 6-10 7L2 6"/></svg>
-        E-mail
-      </a>
-      <a class="btn btn-ghost" href="tel:+5547996305089">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
-        (47) 99630-5089
-      </a>
-    </div>
-  </div>
-</section>
-
-<footer class="mono">01110010 01100001 01100110 — © <span id="year"></span> Rafael Ribeiro Kluge</footer>
+<footer>
+  <span>© <span id="year">2026</span> Rafael Ribeiro Kluge</span>
+  <span>Imagens capturadas dos próprios projetos</span>
+</footer>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // entradas
+  const io = new IntersectionObserver((es) => es.forEach((e) => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+
+  // a descrição entorta com a velocidade da rolagem e voltam ao lugar
+  if (!reduce) {
+    const names = document.querySelector('.statement');
+    let last = scrollY, skew = 0, target = 0;
+    addEventListener('scroll', () => { target = Math.max(-8, Math.min(8, (scrollY - last) * 0.35)); last = scrollY; }, { passive: true });
+    (function tick() {
+      skew += (target - skew) * 0.12; target *= 0.9;
+      names.style.setProperty('--skew', skew.toFixed(2) + 'deg');
+      requestAnimationFrame(tick);
+    })();
+  }
+
+  // contato: mensagem pronta no WhatsApp
+  document.querySelector('.ask').addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    const name = document.getElementById('ask-name').value.trim();
+    const msg = `Oi Rafael, vi seu portfólio. Quero conversar sobre um site para ${name}.`;
+    window.open('https://wa.me/5547996305089?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  });
+</script>
 </body>
 </html>
