@@ -65,10 +65,11 @@
   }
   .statement span{display:block;}
   .portrait{
-    grid-column:1 / 5;grid-row:1;align-self:center;margin:0;max-height:62svh;
-    aspect-ratio:4/5;border-radius:8px;overflow:hidden;
+    grid-column:1 / 5;grid-row:1;align-self:center;justify-self:start;margin:0;
+    width:min(100%, 58svh, 400px);aspect-ratio:1;border-radius:50%;
+    background:var(--ink);padding:clamp(8px, 0.9vw, 12px);
   }
-  .portrait img{width:100%;height:100%;object-fit:cover;}
+  .portrait img{width:100%;height:100%;object-fit:cover;object-position:48% 45%;border-radius:50%;}
   .id{
     grid-column:1 / -1;grid-row:2;align-self:end;
     display:grid;grid-template-columns:auto repeat(4, auto) 1fr;gap:12px 40px;align-items:end;
@@ -200,6 +201,11 @@
   @keyframes rise{to{opacity:1;transform:none;}}
   @keyframes fade{to{opacity:1;}}
 
+  @media (max-width: 1180px){
+    .id{grid-template-columns:1fr 1fr;}
+    .id h1{grid-column:1 / -1;margin-bottom:12px;}
+    .id .cta{grid-column:1 / -1;justify-self:start;margin-top:12px;}
+  }
   /* =============== tablet =============== */
   @media (max-width: 1000px){
     .statement{grid-column:1 / -1;grid-row:2;text-align:left;padding-top:32px;}
@@ -221,7 +227,7 @@
   @media (max-width: 640px){
     .index{padding:20px;}
     .statement{font-size:8.6vw;padding-top:24px;}
-    .portrait{grid-column:1 / 8;max-height:none;}
+    .portrait{grid-column:1 / 8;width:min(100%, 220px);}
     .id h1{order:0;}
     .id .cta{order:1;margin:4px 0 8px;}
     .id p{order:2;}
@@ -250,7 +256,7 @@
 <!-- =============== primeira tela: índice dos projetos =============== -->
 <header class="index">
   <figure class="portrait">
-    <img src="assets/rafael.jpg" width="640" height="800" alt="Rafael Kluge sorrindo, de camiseta branca, com montanhas e céu azul ao fundo">
+    <img src="assets/rafael.jpg" width="640" height="640" alt="Rafael Kluge sorrindo, de camiseta branca, com montanhas e céu azul ao fundo">
   </figure>
 
   <p class="statement" aria-label="Da pesquisa em IA ao site do seu negócio">
