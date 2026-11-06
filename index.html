@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rafael Kluge, portfólio</title>
-<meta name="description" content="Portfólio de Rafael Kluge, estudante de Ciência da Computação na UFPR. Pesquisa em IA no Brasil e no Canadá; sites, sistemas e apps web como Nosso Dia, Conflitos Urbanos e FIKC.">
+<meta name="description" data-en-content="Portfolio of Rafael Kluge, Computer Science student at UFPR, Brazil. AI research in Brazil and Canada; websites, systems and web apps such as Nosso Dia, Conflitos Urbanos and FIKC." content="Portfólio de Rafael Kluge, estudante de Ciência da Computação na UFPR. Pesquisa em IA no Brasil e no Canadá; sites, sistemas e apps web como Nosso Dia, Conflitos Urbanos e FIKC.">
 <meta property="og:title" content="Rafael Kluge, portfólio">
-<meta property="og:description" content="Sites, sistemas e apps web feitos sob medida. Veja meus projetos.">
+<meta property="og:description" data-en-content="Custom websites, systems and web apps. See my projects." content="Sites, sistemas e apps web feitos sob medida. Veja meus projetos.">
 <meta property="og:image" content="assets/fikc-d.jpg">
 <meta name="theme-color" content="#f7941d">
 <link rel="preload" href="assets/fonts/archivo-expanded.woff2" as="font" type="font/woff2" crossorigin>
@@ -86,6 +86,14 @@
     transition:transform .3s var(--ease), background .2s;
   }
   .btn:hover{transform:translateY(-2px);background:#2c3b66;}
+  .lang{
+    position:absolute;top:24px;right:32px;z-index:2;
+    display:flex;gap:2px;padding:3px;border-radius:999px;background:rgba(31,43,77,.12);
+    font-size:var(--step-small);font-weight:500;
+  }
+  .lang button{border:0;background:none;color:var(--ink);font:inherit;min-width:44px;min-height:36px;padding:0 12px;border-radius:999px;cursor:pointer;transition:background .2s, color .2s;}
+  .lang button[aria-pressed="true"]{background:var(--ink);color:#fff;}
+  .lang button:not([aria-pressed="true"]):hover{background:rgba(31,43,77,.12);}
   .btn.orange{background:var(--accent);color:var(--ink) !important;}
   .btn.orange:hover{background:#ffa43a;}
 
@@ -226,6 +234,7 @@
   /* =============== phone =============== */
   @media (max-width: 640px){
     .index{padding:20px;}
+    .lang{top:16px;right:20px;}
     .statement{font-size:8.6vw;padding-top:24px;}
     .portrait{grid-column:1 / 8;width:min(100%, 220px);}
     .id h1{order:0;}
@@ -255,130 +264,134 @@
 
 <!-- =============== primeira tela: índice dos projetos =============== -->
 <header class="index">
+  <div class="lang" role="group" aria-label="Idioma / Language">
+    <button type="button" data-lang="pt" lang="pt-BR" aria-pressed="true">PT</button>
+    <button type="button" data-lang="en" lang="en" aria-pressed="false">EN</button>
+  </div>
   <figure class="portrait">
-    <img src="assets/rafael.jpg" width="640" height="640" alt="Rafael Kluge sorrindo, de camiseta branca, com montanhas e céu azul ao fundo">
+    <img src="assets/rafael.jpg" width="640" height="640" data-en-alt="Rafael Kluge smiling in a white T-shirt, with mountains and blue sky behind him" alt="Rafael Kluge sorrindo, de camiseta branca, com montanhas e céu azul ao fundo">
   </figure>
 
-  <p class="statement" aria-label="Da pesquisa em IA ao site do seu negócio">
-    <span style="--i:0">Da pesquisa</span>
-    <span style="--i:1">em IA ao</span>
-    <span style="--i:2">site do seu</span>
-    <span style="--i:3">negócio</span>
+  <p class="statement" data-en-aria-label="From AI research to your business website" aria-label="Da pesquisa em IA ao site do seu negócio">
+    <span style="--i:0" data-en="From AI">Da pesquisa</span>
+    <span style="--i:1" data-en="research to">em IA ao</span>
+    <span style="--i:2" data-en="your business">site do seu</span>
+    <span style="--i:3" data-en="website">negócio</span>
   </p>
 
   <div class="id">
     <h1>Rafael<br>Kluge</h1>
-    <p>Rafael Ribeiro Kluge<br>Ciência da Computação, UFPR</p>
-    <p>Curitiba, PR<br><a href="mailto:rafaelkluge2010@gmail.com">rafaelkluge2010@gmail.com</a></p>
-    <p>Livre para freelances<br>até fevereiro de 2027</p>
-    <p><a href="#sobre">Sobre mim</a><br><a href="#projetos">Projetos</a><br><a href="#contato">Contato</a></p>
-    <div class="cta"><a class="btn" href="https://wa.me/5547996305089?text=Oi%20Rafael%2C%20vi%20seu%20portf%C3%B3lio%20e%20quero%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener">Conversar no WhatsApp</a></div>
+    <p data-en="Rafael Ribeiro Kluge&lt;br&gt;Computer Science, UFPR">Rafael Ribeiro Kluge<br>Ciência da Computação, UFPR</p>
+    <p data-en="Curitiba, Brazil&lt;br&gt;&lt;a href=&quot;mailto:rafaelkluge2010@gmail.com&quot;&gt;rafaelkluge2010@gmail.com&lt;/a&gt;">Curitiba, PR<br><a href="mailto:rafaelkluge2010@gmail.com">rafaelkluge2010@gmail.com</a></p>
+    <p data-en="Available for freelance&lt;br&gt;until February 2027">Livre para freelances<br>até fevereiro de 2027</p>
+    <p><a href="#sobre" data-en="About">Sobre mim</a><br><a href="#projetos" data-en="Projects">Projetos</a><br><a href="#contato" data-en="Contact">Contato</a></p>
+    <div class="cta"><a class="btn" data-en-href="https://wa.me/5547996305089?text=Hi%20Rafael%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk%20about%20a%20project." href="https://wa.me/5547996305089?text=Oi%20Rafael%2C%20vi%20seu%20portf%C3%B3lio%20e%20quero%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener" data-en="Message me on WhatsApp">Conversar no WhatsApp</a></div>
   </div>
 </header>
 
 <main class="col">
 
-  <section id="sobre" class="sec" aria-label="Sobre mim">
-    <h2 data-reveal>Sobre mim</h2>
+  <section id="sobre" class="sec" data-en-aria-label="About me" aria-label="Sobre mim">
+    <h2 data-reveal data-en="About me">Sobre mim</h2>
     <div class="body">
-      <p class="lead" data-reveal style="--d:1">Estudo Ciência da Computação na UFPR e crio sites, sistemas e apps web para negócios. Faço tudo, do desenho das telas ao servidor no ar.</p>
-      <p data-reveal style="--d:2">Gosto mais da parte que vem antes do código: entender como alguém trabalha, o que os clientes dele perguntam todo dia e onde o tempo se perde. Quando isso fica claro, a solução costuma ser <span class="mark">mais simples do que parecia</span>.</p>
-      <p data-reveal style="--d:3">Acabei de voltar do Canadá, onde passei três meses como pesquisador na Université de Moncton, com bolsa Mitacs Globalink, trabalhando com deep learning e machine learning quântico aplicados ao diagnóstico de câncer. Antes fui EMIT Trainee na ExxonMobil e bolsista do PET Computação, e faço iniciação científica pelo CNPq desde 2024. Até começar meu próximo estágio, em fevereiro de 2027, estou me dedicando a projetos freelance. Publiquei um artigo no Congresso da Sociedade Brasileira de Computação, sobre um tradutor de Libras, e apresentei projetos na Semana Acadêmica de Computação e Informática e na SIEPE da UFPR.</p>
+      <p class="lead" data-reveal style="--d:1" data-en="I study Computer Science at UFPR, in Brazil, and build websites, systems and web apps for businesses. I do all of it, from designing the screens to putting the server online.">Estudo Ciência da Computação na UFPR e crio sites, sistemas e apps web para negócios. Faço tudo, do desenho das telas ao servidor no ar.</p>
+      <p data-reveal style="--d:2" data-en="The part I enjoy most comes before the code: understanding how someone works, what their customers ask every day and where time gets lost. Once that is clear, the solution is usually &lt;span class=&quot;mark&quot;&gt;simpler than it seemed&lt;/span&gt;.">Gosto mais da parte que vem antes do código: entender como alguém trabalha, o que os clientes dele perguntam todo dia e onde o tempo se perde. Quando isso fica claro, a solução costuma ser <span class="mark">mais simples do que parecia</span>.</p>
+      <p data-reveal style="--d:3" data-en="I just came back from Canada, where I spent three months as a researcher at the Université de Moncton on a Mitacs Globalink scholarship, working on deep learning and quantum machine learning for cancer diagnosis. Before that I was an EMIT Trainee at ExxonMobil and a PET Computação fellow, and I have done undergraduate research funded by CNPq since 2024. Until my next internship starts, in February 2027, I am focusing on freelance projects. I published a paper at the Brazilian Computer Society Congress (CSBC) about a Brazilian Sign Language (Libras) translator, and presented projects at UFPR&#x27;s Computing Academic Week and SIEPE.">Acabei de voltar do Canadá, onde passei três meses como pesquisador na Université de Moncton, com bolsa Mitacs Globalink, trabalhando com deep learning e machine learning quântico aplicados ao diagnóstico de câncer. Antes fui EMIT Trainee na ExxonMobil e bolsista do PET Computação, e faço iniciação científica pelo CNPq desde 2024. Até começar meu próximo estágio, em fevereiro de 2027, estou me dedicando a projetos freelance. Publiquei um artigo no Congresso da Sociedade Brasileira de Computação, sobre um tradutor de Libras, e apresentei projetos na Semana Acadêmica de Computação e Informática e na SIEPE da UFPR.</p>
       <dl class="facts" data-reveal style="--d:4">
-        <div><dt>Formação</dt><dd>Ciência da Computação, UFPR</dd></div>
-        <div><dt>Cidade</dt><dd>Curitiba, PR</dd></div>
-        <div><dt>Freelances</dt><dd>Até fevereiro de 2027</dd></div>
-        <div><dt>Agenda</dt><dd>Aberta agora</dd></div>
+        <div><dt data-en="Education">Formação</dt><dd data-en="Computer Science, UFPR">Ciência da Computação, UFPR</dd></div>
+        <div><dt data-en="City">Cidade</dt><dd data-en="Curitiba, Brazil">Curitiba, PR</dd></div>
+        <div><dt data-en="Freelance">Freelances</dt><dd data-en="Until February 2027">Até fevereiro de 2027</dd></div>
+        <div><dt data-en="Schedule">Agenda</dt><dd data-en="Open now">Aberta agora</dd></div>
       </dl>
     </div>
   </section>
 
-  <section id="servicos" class="sec" aria-label="O que eu faço">
-    <h2 data-reveal>O que eu faço</h2>
+  <section id="servicos" class="sec" data-en-aria-label="What I do" aria-label="O que eu faço">
+    <h2 data-reveal data-en="What I do">O que eu faço</h2>
     <div class="body">
       <ul class="rows services">
-        <li data-reveal style="--d:1"><div class="l"><strong>Sites para negócios</strong><span>Página que explica o que você faz, com WhatsApp, horários, preços e mapa. Rápida no celular e fácil de atualizar.</span></div><div class="r">Sob encomenda</div></li>
-        <li data-reveal style="--d:2"><div class="l"><strong>Sistemas para empresas</strong><span>Agenda, cadastro de clientes, orçamentos e faturamento num lugar só, feitos para o jeito como a sua equipe trabalha.</span></div><div class="r">Ex.: FIKC</div></li>
-        <li data-reveal style="--d:3"><div class="l"><strong>Apps web sob medida</strong><span>Login, fotos, pagamento por Pix e um painel para você acompanhar tudo, sem precisar baixar nada.</span></div><div class="r">Ex.: Nosso Dia</div></li>
-        <li data-reveal style="--d:4"><div class="l"><strong>Dados e mapas</strong><span>Coleta automática, banco de dados, classificação com machine learning e visualização em mapa.</span></div><div class="r">Ex.: Conflitos Urbanos</div></li>
+        <li data-reveal style="--d:1"><div class="l"><strong data-en="Business websites">Sites para negócios</strong><span data-en="A page that explains what you do, with WhatsApp, opening hours, prices and a map. Fast on phones and easy to update.">Página que explica o que você faz, com WhatsApp, horários, preços e mapa. Rápida no celular e fácil de atualizar.</span></div><div class="r" data-en="Made to order">Sob encomenda</div></li>
+        <li data-reveal style="--d:2"><div class="l"><strong data-en="Business systems">Sistemas para empresas</strong><span data-en="Scheduling, customer records, quotes and billing in one place, built around the way your team works.">Agenda, cadastro de clientes, orçamentos e faturamento num lugar só, feitos para o jeito como a sua equipe trabalha.</span></div><div class="r" data-en="E.g. FIKC">Ex.: FIKC</div></li>
+        <li data-reveal style="--d:3"><div class="l"><strong data-en="Custom web apps">Apps web sob medida</strong><span data-en="Login, photos, instant payments and a dashboard to follow everything, with nothing to download.">Login, fotos, pagamento por Pix e um painel para você acompanhar tudo, sem precisar baixar nada.</span></div><div class="r" data-en="E.g. Nosso Dia">Ex.: Nosso Dia</div></li>
+        <li data-reveal style="--d:4"><div class="l"><strong data-en="Data and maps">Dados e mapas</strong><span data-en="Automated data collection, databases, machine learning classification and map visualization.">Coleta automática, banco de dados, classificação com machine learning e visualização em mapa.</span></div><div class="r" data-en="E.g. Conflitos Urbanos">Ex.: Conflitos Urbanos</div></li>
       </ul>
     </div>
   </section>
 
-  <section id="projetos" aria-label="Projetos">
-    <h2 data-reveal>Projetos</h2>
+  <section id="projetos" data-en-aria-label="Projects" aria-label="Projetos">
+    <h2 data-reveal data-en="Projects">Projetos</h2>
 
     <article class="proj" id="nosso-dia">
       <div class="shots phones" data-reveal>
-        <img src="assets/nd-home-m.jpg" width="640" height="1376" loading="lazy" alt="Nosso Dia no celular: alianças douradas e o título Cada convidado vira fotógrafo do casamento">
-        <img src="assets/nd-walk2.jpg" width="640" height="1376" loading="lazy" alt="Mundo 3D da festa com pista de dança, bolo e polaroides penduradas">
-        <img src="assets/nd-album2.jpg" width="640" height="1376" loading="lazy" alt="Álbum de Ana e João com abas Casório e Festa e uma grade de fotos">
+        <img src="assets/nd-home-m.jpg" width="640" height="1376" loading="lazy" data-en-alt="Nosso Dia on a phone: golden rings and the title Every guest becomes a wedding photographer" alt="Nosso Dia no celular: alianças douradas e o título Cada convidado vira fotógrafo do casamento">
+        <img src="assets/nd-walk2.jpg" width="640" height="1376" loading="lazy" data-en-alt="3D world of the party with a dance floor, a cake and hanging polaroids" alt="Mundo 3D da festa com pista de dança, bolo e polaroides penduradas">
+        <img src="assets/nd-album2.jpg" width="640" height="1376" loading="lazy" data-en-alt="Ana and João&#x27;s album with Ceremony and Party tabs and a photo grid" alt="Álbum de Ana e João com abas Casório e Festa e uma grade de fotos">
       </div>
       <div class="ptext">
         <h3 data-reveal>Nosso Dia</h3>
-        <p class="kind" data-reveal>App web para casamentos, 2026</p>
-        <p data-reveal style="--d:1">Os convidados tiram fotos pelo celular durante a festa, sem baixar app nem criar conta: basta o QR code da mesa. As fotos chegam ao casal na hora e viram álbum, filme e um pequeno mundo 3D do casamento, com lista de presentes paga por Pix.</p>
-        <p class="stack" data-reveal style="--d:2">Next.js, React, TypeScript, Supabase e Three.js</p>
+        <p class="kind" data-reveal data-en="Web app for weddings, 2026">App web para casamentos, 2026</p>
+        <p data-reveal style="--d:1" data-en="Guests take photos with their phones during the party, with no app to download and no account to create: they just scan the QR code on the table. The photos reach the couple instantly and become an album, a film and a small 3D world of the wedding, with a gift registry paid through Pix.">Os convidados tiram fotos pelo celular durante a festa, sem baixar app nem criar conta: basta o QR code da mesa. As fotos chegam ao casal na hora e viram álbum, filme e um pequeno mundo 3D do casamento, com lista de presentes paga por Pix.</p>
+        <p class="stack" data-reveal style="--d:2" data-en="Next.js, React, TypeScript, Supabase and Three.js">Next.js, React, TypeScript, Supabase e Three.js</p>
       </div>
     </article>
 
     <article class="proj" id="conflitos">
       <div class="shots wide" data-reveal>
-        <img src="assets/cu-radar.jpg" width="1440" height="900" loading="lazy" alt="Radar de conflitos: lista de temas ao lado do mapa de Curitiba com marcadores vermelhos">
+        <img src="assets/cu-radar.jpg" width="1440" height="900" loading="lazy" data-en-alt="Conflict radar: list of topics next to a map of Curitiba with red markers" alt="Radar de conflitos: lista de temas ao lado do mapa de Curitiba com marcadores vermelhos">
       </div>
       <div class="ptext">
         <h3 data-reveal>Conflitos Urbanos</h3>
-        <p class="kind" data-reveal>Iniciação científica no CEPPUR, UFPR</p>
-        <p data-reveal style="--d:1">Um robô lê portais de notícia, um modelo de machine learning separa as que falam de conflito urbano e o endereço vira um ponto no mapa. Hoje são 705 notícias de Curitiba e região, de 2016 a 2026, filtráveis por tema.</p>
-        <p class="stack" data-reveal style="--d:2">Python, FastAPI, PostgreSQL, React e Leaflet</p>
-        <p data-reveal style="--d:3"><a class="textlink" href="https://conflitos-urbanos.pages.dev" target="_blank" rel="noopener">Abrir o radar</a></p>
+        <p class="kind" data-reveal data-en="Undergraduate research at CEPPUR, UFPR">Iniciação científica no CEPPUR, UFPR</p>
+        <p data-reveal style="--d:1" data-en="A bot reads news sites, a machine learning model picks out the stories about urban conflict, and each address becomes a point on the map. It now holds 705 stories from Curitiba and its region, from 2016 to 2026, filterable by topic.">Um robô lê portais de notícia, um modelo de machine learning separa as que falam de conflito urbano e o endereço vira um ponto no mapa. Hoje são 705 notícias de Curitiba e região, de 2016 a 2026, filtráveis por tema.</p>
+        <p class="stack" data-reveal style="--d:2" data-en="Python, FastAPI, PostgreSQL, React and Leaflet">Python, FastAPI, PostgreSQL, React e Leaflet</p>
+        <p data-reveal style="--d:3"><a class="textlink" href="https://conflitos-urbanos.pages.dev" target="_blank" rel="noopener" data-en="Open the radar">Abrir o radar</a></p>
       </div>
     </article>
 
     <article class="proj" id="fikc">
       <div class="shots dark" data-reveal>
-        <img src="assets/fikc-d.jpg" width="1440" height="900" loading="lazy" alt="Página do FIKC: Seu sistema deveria se pagar, não ser só uma agenda, com painel de faturamento e orçamentos">
+        <img src="assets/fikc-d.jpg" width="1440" height="900" loading="lazy" data-en-alt="FIKC page: Your system should pay for itself, not just be a calendar, with a billing and quotes dashboard" alt="Página do FIKC: Seu sistema deveria se pagar, não ser só uma agenda, com painel de faturamento e orçamentos">
       </div>
       <div class="ptext">
         <h3 data-reveal>FIKC</h3>
-        <p class="kind" data-reveal>Sistema para consultórios odontológicos, no ar</p>
-        <p data-reveal style="--d:1">Agenda, orçamentos, retornos e faturamento num lugar só. O sistema mostra onde o consultório está perdendo dinheiro, como o orçamento aprovado que parou ou o retorno que ninguém chamou, e ajuda a recuperar.</p>
-        <p class="stack" data-reveal style="--d:2">Node.js, JavaScript e PostgreSQL</p>
-        <p data-reveal style="--d:3"><a class="textlink" href="https://www.fikcsolutions.com.br" target="_blank" rel="noopener">Abrir o site</a></p>
+        <p class="kind" data-reveal data-en="System for dental clinics, live">Sistema para consultórios odontológicos, no ar</p>
+        <p data-reveal style="--d:1" data-en="Scheduling, quotes, follow-ups and billing in one place. The system shows where the clinic is losing money, like an approved quote that stalled or a follow-up nobody booked, and helps win it back.">Agenda, orçamentos, retornos e faturamento num lugar só. O sistema mostra onde o consultório está perdendo dinheiro, como o orçamento aprovado que parou ou o retorno que ninguém chamou, e ajuda a recuperar.</p>
+        <p class="stack" data-reveal style="--d:2" data-en="Node.js, JavaScript and PostgreSQL">Node.js, JavaScript e PostgreSQL</p>
+        <p data-reveal style="--d:3"><a class="textlink" href="https://www.fikcsolutions.com.br" target="_blank" rel="noopener" data-en="Open the website">Abrir o site</a></p>
       </div>
     </article>
 
     <div class="others" id="outros">
-      <h3 data-reveal>Outros projetos</h3>
+      <h3 data-reveal data-en="Other projects">Outros projetos</h3>
       <ul class="rows">
-        <li data-reveal><div class="l"><strong><a href="https://github.com/rafaklugee/tatik" target="_blank" rel="noopener">Tatik</a></strong><span>Prancheta de basquete em 2D e 3D para técnicos</span></div><div class="r">App web</div></li>
-        <li data-reveal><div class="l"><strong><a href="https://github.com/rafaklugee/bicharada-da-sorte" target="_blank" rel="noopener">Bicharada da Sorte</a></strong><span>Jogo de plataforma em pixel art, em desenvolvimento</span></div><div class="r">Jogo</div></li>
-        <li data-reveal><div class="l"><strong><a href="https://github.com/rafaklugee/PET-GAME" target="_blank" rel="noopener">PET-GAME</a></strong><span>Jogo 8-bit que ensina circuitos digitais, em Lua</span></div><div class="r">Jogo didático</div></li>
-        <li data-reveal><div class="l"><strong><a href="https://github.com/rafaklugee/prog2" target="_blank" rel="noopener">VINAc e Run-n-Gun</a></strong><span>Compactador de arquivos e jogo de ação, em C</span></div><div class="r">Faculdade</div></li>
+        <li data-reveal><div class="l"><strong><a href="https://github.com/rafaklugee/tatik" target="_blank" rel="noopener">Tatik</a></strong><span data-en="2D and 3D basketball playbook for coaches">Prancheta de basquete em 2D e 3D para técnicos</span></div><div class="r" data-en="Web app">App web</div></li>
+        <li data-reveal><div class="l"><strong><a href="https://github.com/rafaklugee/bicharada-da-sorte" target="_blank" rel="noopener">Bicharada da Sorte</a></strong><span data-en="Pixel art platformer, in development">Jogo de plataforma em pixel art, em desenvolvimento</span></div><div class="r" data-en="Game">Jogo</div></li>
+        <li data-reveal><div class="l"><strong><a href="https://github.com/rafaklugee/PET-GAME" target="_blank" rel="noopener">PET-GAME</a></strong><span data-en="8-bit game that teaches digital circuits, in Lua">Jogo 8-bit que ensina circuitos digitais, em Lua</span></div><div class="r" data-en="Educational game">Jogo didático</div></li>
+        <li data-reveal><div class="l"><strong><a href="https://github.com/rafaklugee/prog2" target="_blank" rel="noopener" data-en="VINAc and Run-n-Gun">VINAc e Run-n-Gun</a></strong><span data-en="File archiver and action game, in C">Compactador de arquivos e jogo de ação, em C</span></div><div class="r" data-en="University">Faculdade</div></li>
       </ul>
     </div>
   </section>
 
   <section id="experiencia" class="xp" aria-labelledby="xp-title">
     <div class="xp-head">
-      <h2 id="xp-title" data-reveal>Experiência</h2>
-      <p data-reveal style="--d:1">Pesquisa no Brasil e no Canadá, indústria e universidade, do mais recente ao mais antigo.</p>
+      <h2 id="xp-title" data-reveal data-en="Experience">Experiência</h2>
+      <p data-reveal style="--d:1" data-en="Research in Brazil and Canada, industry and university, from most recent to oldest.">Pesquisa no Brasil e no Canadá, indústria e universidade, do mais recente ao mais antigo.</p>
     </div>
 
     <div class="xp-year">
       <p class="y" data-reveal>2026</p>
       <ol>
         <li data-reveal style="--d:1">
-          <h3>Pesquisador visitante</h3>
-          <p class="org">Université de Moncton, Canadá, com bolsa Mitacs Globalink</p>
-          <p>Três meses no Departamento de Informática, com deep learning e machine learning quântico para o diagnóstico de câncer em tomografias.</p>
-          <p class="when">ago. a out. 2026</p>
+          <h3 data-en="Visiting researcher">Pesquisador visitante</h3>
+          <p class="org" data-en="Université de Moncton, Canada, on a Mitacs Globalink scholarship">Université de Moncton, Canadá, com bolsa Mitacs Globalink</p>
+          <p data-en="Three months in the Computer Science Department, using deep learning and quantum machine learning to diagnose cancer in CT scans.">Três meses no Departamento de Informática, com deep learning e machine learning quântico para o diagnóstico de câncer em tomografias.</p>
+          <p class="when" data-en="Aug to Oct 2026">ago. a out. 2026</p>
         </li>
         <li data-reveal style="--d:2">
           <h3>EMIT Trainee</h3>
           <p class="org">ExxonMobil, Curitiba</p>
-          <p>Programa de trainee em tecnologia da informação.</p>
-          <p class="when">fev. a jul. 2026</p>
+          <p data-en="Information technology trainee program.">Programa de trainee em tecnologia da informação.</p>
+          <p class="when" data-en="Feb to Jul 2026">fev. a jul. 2026</p>
         </li>
       </ol>
     </div>
@@ -387,10 +400,10 @@
       <p class="y" data-reveal>2025</p>
       <ol>
         <li data-reveal style="--d:1">
-          <h3>Iniciação científica, CNPq</h3>
+          <h3 data-en="Undergraduate research, CNPq">Iniciação científica, CNPq</h3>
           <p class="org">CEPPUR, UFPR</p>
-          <p>Mapeamento de conflitos urbanos e rastreamento automático de notícias de protesto com machine learning. Virou o radar Conflitos Urbanos.</p>
-          <p class="when">desde ago. 2025</p>
+          <p data-en="Mapping urban conflicts and automatically tracking protest news with machine learning. It became the Conflitos Urbanos radar.">Mapeamento de conflitos urbanos e rastreamento automático de notícias de protesto com machine learning. Virou o radar Conflitos Urbanos.</p>
+          <p class="when" data-en="since Aug 2025">desde ago. 2025</p>
         </li>
       </ol>
     </div>
@@ -399,92 +412,92 @@
       <p class="y" data-reveal>2024</p>
       <ol>
         <li data-reveal style="--d:1">
-          <h3>Bolsista, PET Computação</h3>
+          <h3 data-en="Fellow, PET Computação">Bolsista, PET Computação</h3>
           <p class="org">UFPR</p>
-          <p>Pesquisa, ensino e extensão para a comunidade de dentro e de fora da universidade.</p>
-          <p class="when">mai. 2024 a ago. 2025</p>
+          <p data-en="Research, teaching and outreach for people inside and outside the university.">Pesquisa, ensino e extensão para a comunidade de dentro e de fora da universidade.</p>
+          <p class="when" data-en="May 2024 to Aug 2025">mai. 2024 a ago. 2025</p>
         </li>
         <li data-reveal style="--d:2">
-          <h3>Iniciação científica, CNPq</h3>
-          <p class="org">Análise de dados meteorológicos</p>
-          <p>Automação do processamento de grandes volumes de dados com scripts em Bash.</p>
-          <p class="when">abr. a set. 2024</p>
+          <h3 data-en="Undergraduate research, CNPq">Iniciação científica, CNPq</h3>
+          <p class="org" data-en="Weather data analysis">Análise de dados meteorológicos</p>
+          <p data-en="Automating the processing of large volumes of data with Bash scripts.">Automação do processamento de grandes volumes de dados com scripts em Bash.</p>
+          <p class="when" data-en="Apr to Sep 2024">abr. a set. 2024</p>
         </li>
         <li data-reveal style="--d:3">
-          <h3>Bacharelado em Ciência da Computação</h3>
-          <p class="org">Universidade Federal do Paraná</p>
-          <p>Transferido da UDESC Joinville, onde cursei o primeiro ano, em 2023.</p>
-          <p class="when">desde fev. 2024</p>
+          <h3 data-en="Bachelor&#x27;s in Computer Science">Bacharelado em Ciência da Computação</h3>
+          <p class="org" data-en="Federal University of Paraná">Universidade Federal do Paraná</p>
+          <p data-en="Transferred from UDESC Joinville, where I did my first year, in 2023.">Transferido da UDESC Joinville, onde cursei o primeiro ano, em 2023.</p>
+          <p class="when" data-en="since Feb 2024">desde fev. 2024</p>
         </li>
       </ol>
     </div>
 
     <div class="xp-pubs">
-      <p class="y small" data-reveal>Publicações</p>
+      <p class="y small" data-reveal data-en="Publications">Publicações</p>
       <ul>
-        <li data-reveal style="--d:1"><strong>Tradutor de Libras</strong><span>Artigo publicado no Congresso da Sociedade Brasileira de Computação</span></li>
-        <li data-reveal style="--d:2"><strong>Câncer de rim em tomografia</strong><span>Segmentação 3D com deep learning e classificação com machine learning quântico, em preparação</span></li>
-        <li data-reveal style="--d:3"><strong>Palestras na UFPR</strong><span>Semana Acadêmica de Computação e Informática e SIEPE</span></li>
+        <li data-reveal style="--d:1"><strong data-en="Brazilian Sign Language translator">Tradutor de Libras</strong><span data-en="Paper published at the Brazilian Computer Society Congress">Artigo publicado no Congresso da Sociedade Brasileira de Computação</span></li>
+        <li data-reveal style="--d:2"><strong data-en="Kidney cancer in CT scans">Câncer de rim em tomografia</strong><span data-en="3D segmentation with deep learning and classification with quantum machine learning, in preparation">Segmentação 3D com deep learning e classificação com machine learning quântico, em preparação</span></li>
+        <li data-reveal style="--d:3"><strong data-en="Talks at UFPR">Palestras na UFPR</strong><span data-en="Computing Academic Week and SIEPE">Semana Acadêmica de Computação e Informática e SIEPE</span></li>
       </ul>
     </div>
   </section>
 
-  <section id="cursos" class="sec tinted field" aria-label="Cursos e certificações">
-    <h2 data-reveal>Cursos</h2>
+  <section id="cursos" class="sec tinted field" data-en-aria-label="Courses and certifications" aria-label="Cursos e certificações">
+    <h2 data-reveal data-en="Courses">Cursos</h2>
     <div class="body">
       <ul class="rows">
-        <li data-reveal><div class="l"><strong>GitHub Advanced Security (GHAS)</strong><span>Segurança de código no GitHub</span></div><div class="r">certificação</div></li>
-        <li data-reveal><div class="l"><strong>ASP.NET Core Web API Fundamentals</strong><span>APIs web com C# e .NET</span></div><div class="r">certificação</div></li>
-        <li data-reveal><div class="l"><strong>Learning Git and GitHub</strong><span>Versionamento e colaboração</span></div><div class="r">certificação</div></li>
-        <li data-reveal><div class="l"><strong>Desenvolvimento de Jogos</strong><span>Criação de jogos digitais</span></div><div class="r">curso</div></li>
-        <li data-reveal><div class="l"><strong>HTML Básico e Avançado</strong><span>Estrutura e semântica de páginas web</span></div><div class="r">curso</div></li>
-        <li data-reveal><div class="l"><strong>Perfil completo</strong><span>Todos os cargos, cursos e certificados</span></div><div class="r"><a href="https://www.linkedin.com/in/rafaelribeirokluge/" target="_blank" rel="noopener">LinkedIn</a></div></li>
+        <li data-reveal><div class="l"><strong>GitHub Advanced Security (GHAS)</strong><span data-en="Code security on GitHub">Segurança de código no GitHub</span></div><div class="r" data-en="certification">certificação</div></li>
+        <li data-reveal><div class="l"><strong>ASP.NET Core Web API Fundamentals</strong><span data-en="Web APIs with C# and .NET">APIs web com C# e .NET</span></div><div class="r" data-en="certification">certificação</div></li>
+        <li data-reveal><div class="l"><strong>Learning Git and GitHub</strong><span data-en="Version control and collaboration">Versionamento e colaboração</span></div><div class="r" data-en="certification">certificação</div></li>
+        <li data-reveal><div class="l"><strong data-en="Game Development">Desenvolvimento de Jogos</strong><span data-en="Making digital games">Criação de jogos digitais</span></div><div class="r" data-en="course">curso</div></li>
+        <li data-reveal><div class="l"><strong data-en="HTML, Basic and Advanced">HTML Básico e Avançado</strong><span data-en="Structure and semantics of web pages">Estrutura e semântica de páginas web</span></div><div class="r" data-en="course">curso</div></li>
+        <li data-reveal><div class="l"><strong data-en="Full profile">Perfil completo</strong><span data-en="Every role, course and certificate">Todos os cargos, cursos e certificados</span></div><div class="r"><a href="https://www.linkedin.com/in/rafaelribeirokluge/" target="_blank" rel="noopener">LinkedIn</a></div></li>
       </ul>
     </div>
   </section>
 
-  <section id="ferramentas" class="sec tinted" aria-label="Ferramentas">
-    <h2 data-reveal>Ferramentas</h2>
+  <section id="ferramentas" class="sec tinted" data-en-aria-label="Tools" aria-label="Ferramentas">
+    <h2 data-reveal data-en="Tools">Ferramentas</h2>
     <div class="body toolcols">
       <div><p class="group" data-reveal>Front-end</p>
       <ul class="rows">
-        <li data-reveal><div class="l"><strong>HTML, CSS, JavaScript, TypeScript</strong></div><div class="r">sites</div></li>
-        <li data-reveal><div class="l"><strong>React, Next.js</strong></div><div class="r">apps web</div></li>
-        <li data-reveal><div class="l"><strong>Three.js</strong></div><div class="r">3D no navegador</div></li>
+        <li data-reveal><div class="l"><strong>HTML, CSS, JavaScript, TypeScript</strong></div><div class="r" data-en="websites">sites</div></li>
+        <li data-reveal><div class="l"><strong>React, Next.js</strong></div><div class="r" data-en="web apps">apps web</div></li>
+        <li data-reveal><div class="l"><strong>Three.js</strong></div><div class="r" data-en="3D in the browser">3D no navegador</div></li>
       </ul></div>
-      <div><p class="group" data-reveal>Back-end e dados</p>
+      <div><p class="group" data-reveal data-en="Back end and data">Back-end e dados</p>
       <ul class="rows">
-        <li data-reveal><div class="l"><strong>Node.js, Python, FastAPI</strong></div><div class="r">servidores e APIs</div></li>
-        <li data-reveal><div class="l"><strong>PostgreSQL, Supabase</strong></div><div class="r">bancos de dados</div></li>
-        <li data-reveal><div class="l"><strong>Azure, DBT, Snowflake, Datadog</strong></div><div class="r">nuvem e dados</div></li>
+        <li data-reveal><div class="l"><strong>Node.js, Python, FastAPI</strong></div><div class="r" data-en="servers and APIs">servidores e APIs</div></li>
+        <li data-reveal><div class="l"><strong>PostgreSQL, Supabase</strong></div><div class="r" data-en="databases">bancos de dados</div></li>
+        <li data-reveal><div class="l"><strong>Azure, DBT, Snowflake, Datadog</strong></div><div class="r" data-en="cloud and data">nuvem e dados</div></li>
       </ul></div>
-      <div><p class="group" data-reveal>IA e dados</p>
+      <div><p class="group" data-reveal data-en="AI and data">IA e dados</p>
       <ul class="rows">
-        <li data-reveal><div class="l"><strong>Deep learning, machine learning quântico</strong></div><div class="r">pesquisa</div></li>
-        <li data-reveal><div class="l"><strong>Azure DevOps, Bash</strong></div><div class="r">automação</div></li>
+        <li data-reveal><div class="l"><strong data-en="Deep learning, quantum machine learning">Deep learning, machine learning quântico</strong></div><div class="r" data-en="research">pesquisa</div></li>
+        <li data-reveal><div class="l"><strong>Azure DevOps, Bash</strong></div><div class="r" data-en="automation">automação</div></li>
       </ul>
-      <p class="group" data-reveal style="margin-top:28px">Linguagens da faculdade</p>
+      <p class="group" data-reveal style="margin-top:28px" data-en="University languages">Linguagens da faculdade</p>
       <ul class="rows">
-        <li data-reveal><div class="l"><strong>C, C++, C#, Java, Lua, Haskell</strong></div><div class="r">sistemas e jogos</div></li>
+        <li data-reveal><div class="l"><strong>C, C++, C#, Java, Lua, Haskell</strong></div><div class="r" data-en="systems and games">sistemas e jogos</div></li>
       </ul></div>
     </div>
   </section>
 
-  <section id="contato" class="sec contact" aria-label="Contato">
-    <h2 data-reveal>Vamos conversar</h2>
+  <section id="contato" class="sec contact" data-en-aria-label="Contact" aria-label="Contato">
+    <h2 data-reveal data-en="Let&#x27;s talk">Vamos conversar</h2>
     <div class="body">
       <form class="ask" action="https://wa.me/5547996305089" method="get" target="_blank" data-reveal style="--d:1">
-        <label for="ask-name">Escreva o nome do seu negócio e me chame</label>
+        <label for="ask-name" data-en="Type your business name and message me">Escreva o nome do seu negócio e me chame</label>
         <div class="field">
-          <input id="ask-name" name="text" type="text" placeholder="Ex.: Padaria da Rosa" autocomplete="organization" required>
-          <button type="submit" aria-label="Abrir conversa no WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <input id="ask-name" name="text" type="text" data-en-placeholder="E.g. Rosa&#x27;s Bakery" placeholder="Ex.: Padaria da Rosa" autocomplete="organization" required>
+          <button type="submit" data-en-aria-label="Open a WhatsApp chat" aria-label="Abrir conversa no WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
         </div>
       </form>
-      <p class="ask-note" data-reveal style="--d:2">Abre o WhatsApp com a mensagem pronta para mim. Estou com agenda livre para freelances até fevereiro de 2027.</p>
+      <p class="ask-note" data-reveal style="--d:2" data-en="Opens WhatsApp with a ready-made message to me. I&#x27;m available for freelance work until February 2027.">Abre o WhatsApp com a mensagem pronta para mim. Estou com agenda livre para freelances até fevereiro de 2027.</p>
       <dl class="reach" data-reveal style="--d:3">
         <dt>WhatsApp</dt><dd><a href="https://wa.me/5547996305089" target="_blank" rel="noopener">(47) 99630-5089</a></dd>
-        <dt>E-mail</dt><dd><a href="mailto:rafaelkluge2010@gmail.com">rafaelkluge2010@gmail.com</a></dd>
-        <dt>Também em</dt><dd><a href="https://www.linkedin.com/in/rafaelribeirokluge/" target="_blank" rel="noopener">LinkedIn</a> e <a href="https://github.com/rafaklugee" target="_blank" rel="noopener">GitHub</a></dd>
+        <dt data-en="Email">E-mail</dt><dd><a href="mailto:rafaelkluge2010@gmail.com">rafaelkluge2010@gmail.com</a></dd>
+        <dt data-en="Also on">Também em</dt><dd data-en="&lt;a href=&quot;https://www.linkedin.com/in/rafaelribeirokluge/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;LinkedIn&lt;/a&gt; and &lt;a href=&quot;https://github.com/rafaklugee&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;"><a href="https://www.linkedin.com/in/rafaelribeirokluge/" target="_blank" rel="noopener">LinkedIn</a> e <a href="https://github.com/rafaklugee" target="_blank" rel="noopener">GitHub</a></dd>
       </dl>
     </div>
   </section>
@@ -492,11 +505,50 @@
 
 <footer>
   <span>© <span id="year">2026</span> Rafael Ribeiro Kluge</span>
-  <span>Imagens capturadas dos próprios projetos</span>
+  <span data-en="Screenshots taken from the projects themselves">Imagens capturadas dos próprios projetos</span>
 </footer>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // idioma: português para quem está no Brasil ou usa navegador em português, inglês para o resto
+  const ATTRS = ['aria-label', 'alt', 'placeholder', 'content', 'href'];
+  const pt = new Map();
+  document.querySelectorAll('[data-en]').forEach((el) => pt.set(el, el.innerHTML));
+  const ptAttr = new Map();
+  ATTRS.forEach((a) => document.querySelectorAll(`[data-en-${a}]`).forEach((el) => {
+    ptAttr.set(el, Object.assign(ptAttr.get(el) || {}, { [a]: el.getAttribute(a) }));
+  }));
+  const TITLE = { pt: document.title, en: 'Rafael Kluge, portfolio' };
+  let lang = 'pt';
+
+  function setLang(l) {
+    lang = l;
+    document.documentElement.lang = l === 'en' ? 'en' : 'pt-BR';
+    document.title = TITLE[l];
+    pt.forEach((html, el) => { el.innerHTML = l === 'en' ? el.dataset.en : html; });
+    ATTRS.forEach((a) => document.querySelectorAll(`[data-en-${a}]`).forEach((el) => {
+      el.setAttribute(a, l === 'en' ? el.getAttribute(`data-en-${a}`) : ptAttr.get(el)[a]);
+    }));
+    document.querySelectorAll('.lang button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === l)));
+  }
+
+  function detectLang() {
+    try { const saved = localStorage.getItem('lang'); if (saved === 'pt' || saved === 'en') return saved; } catch (e) {}
+    const langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''];
+    if (langs.some((x) => /^pt\b/i.test(x))) return 'pt';
+    let tz = '';
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+    const brazil = /^America\/(Sao_Paulo|Bahia|Fortaleza|Recife|Belem|Maceio|Araguaina|Santarem|Manaus|Cuiaba|Campo_Grande|Porto_Velho|Boa_Vista|Rio_Branco|Eirunepe|Noronha)$/;
+    return brazil.test(tz) ? 'pt' : 'en';
+  }
+
+  const initial = detectLang();
+  if (initial !== 'pt') setLang(initial);
+  document.querySelectorAll('.lang button').forEach((b) => b.addEventListener('click', () => {
+    setLang(b.dataset.lang);
+    try { localStorage.setItem('lang', b.dataset.lang); } catch (e) {}
+  }));
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // entradas
@@ -521,7 +573,9 @@
   document.querySelector('.ask').addEventListener('submit', (ev) => {
     ev.preventDefault();
     const name = document.getElementById('ask-name').value.trim();
-    const msg = `Oi Rafael, vi seu portfólio. Quero conversar sobre um site para ${name}.`;
+    const msg = lang === 'en'
+      ? `Hi Rafael, I saw your portfolio. I'd like to talk about a website for ${name}.`
+      : `Oi Rafael, vi seu portfólio. Quero conversar sobre um site para ${name}.`;
     window.open('https://wa.me/5547996305089?text=' + encodeURIComponent(msg), '_blank', 'noopener');
   });
 </script>
